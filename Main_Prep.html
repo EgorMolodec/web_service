@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<link rel='StyleSheet' type='text/css' href='styles.css'>
+<meta charset="utf-8">
+<meta name="viewport"
+		  contect="widht=device-widht, user-scalable=no, initial-scale=1.0, maximus-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
+<title>Главная страница</title>
+<script src="scripts/jquery.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+</script>
+<style>
+	body {
+		background: #FDF5E6;
+		font-family: Georgia, 'Times New Roman', Times, serif
+	}
+	header{
+		widht: 100%
+	}
+	.child{
+		height: 10px;
+		display: inline-block;
+		width: 69%;
+	}
+	.child1{
+		height: 10px;
+		display: inline-block;
+		width: 30%;
+	}
+	.sel{
+		background-clip:padding-box;
+		border-width:10px
+	}
+	.col{
+		background-color:#4169E1;
+		border-color:#4169E1;
+	}
+	a{
+		color:white;
+	}
+	a:visited{
+		color:gray;
+	}
+	a:active{
+		color:black;
+	}
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	html,
+	body,
+	.wrapper {
+		height: 100%;
+	}
+	.content {
+		box-sizing: border-box;
+		min-height: 100%;
+		padding-bottom: 90px;
+	}
+	.footer {
+		height: 80px;
+		margin-top: -80px;
+	}
+	
+
+</style>
+</head>
+
+<body>
+<div class="wrapper">
+	<div class="content">
+	
+	<header style="background: #4169E1; widht:100%">
+		<div class="container" style="background: #4169E1; border: 2px solid #4169E1; widht:100%">
+		<p> </p>
+		<p style="font-variant: small-caps;font-size: 40px; color: white; ">Иванов Иван Иванович <button type="button" class="btn btn-primary" style="background-color: #4682B4; border: 2px solid #4682B4;">Выход</button></p>
+		<p style="color: #F0F8FF">Некоторая информация</p>	
+		</div>
+	</header>
+		
+		<p>&nbsp;</p>
+		
+	<div style="margin-left:40px">
+		<button type="button" class="btn btn-primary ">Добавить курс</button>
+		<p>&nbsp;</p>
+		
+		<div class="dropdown">
+			<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			Выбрать курс
+			</button>
+		
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<a class="dropdown-item" href="#">Курс 1</a>
+				<a class="dropdown-item" href="#">Курс 2</a>
+				<a class="dropdown-item" href="#">Курс 3</a>
+			</div>
+		</div>
+		
+		<p>&nbsp;</p>
+		<button type="button" class="btn btn-primary" style="background-color: #DC143C; border: 2px solid #DC143C;">Удалить файл</button>
+		<p>&nbsp;</p>
+		<button type="button" class="btn btn-primary" style="background-color: #FFD700; border: 2px solid #FFD700; color:black">Настройки</button>
+		<p>&nbsp;</p>
+	</div>
+	
+
+	
+	
+	
+	
+	</div>
+	
+	<footer class="sel col">
+			<p>&nbsp;</p>
+		<div class="child">
+			<address style="color:white">
+			<p>При возникновении вопросов обращаться по почте: </p>
+			<a href="mailto:nsablina15@gmail.com" style="font-style:italic">Заказчик</a>
+			</address>
+		</div>
+		<div class="child1">
+			<p style="text-align:right;">Copyright&copy;2016</p>
+		</div>
+	</footer>
+
+	</div>
+</body>
+</html>
