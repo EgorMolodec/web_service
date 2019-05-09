@@ -1,12 +1,12 @@
 <?php include ROOT . '/views/layouts/header_admin.php'; ?>
 
 <section>
-    <div class="container">
+    <div class="wrapper">
         <div class="row">
             
             <br/>
             
-            <h4>Добрый день!</h4>
+            <p>Добрый день!</p>
             
             <br/>
             
@@ -14,9 +14,10 @@
             
             <br/>
             
-            <ul>
-                <li><a href="/course/create/">Добавить курс</a></li>
-                <li>
+            
+                <ul>
+                <li class="btn btn-primary"><a href="/course/create/" >Добавить курс</a></li>
+                <li class="btn btn-primary dropdown-toggle" >
                     <ul>
                         <?php foreach ($coursesList as $course): ?>
                         <li>
@@ -27,10 +28,12 @@
                             <?php endforeach; ?>
                     </ul>
                 </li>
-                <li><a href="/">Настройки</a></li>
+                <li class="btn btn-primary"><a href="/">Настройки</a></li>
                 
                 
-            </ul>
+                </ul>            
+            
+
             
         </div>
     </div>
