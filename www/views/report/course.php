@@ -1,17 +1,47 @@
 <?php include ROOT . '/views/layouts/header_admin.php'; ?>
 
+<script type="text/javascript" src="../../template/js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#sub_report').css('display', 'none');
+    
+    $("#courseName").change(function() {
+		clearlist();
+		var coursevalue = $("#courseName option:selected").val();
+		//if (countryvalue === '') {clearlist(); }
+		if (coursevalue === '') {clearlist(); $('#get_task').css('display', 'none');  }
+		showReports();
+	})
+    
+    function showReports(){
+        var course_value = $("#courseName option:selected").val();
+	//var p_id = $("#page_id").val();
+	var task = $("#get_task");
+	var gettask_value = task.val();
+	if (course_value === "") {
+		task.attr("disabled",true);
+	} else {
+		task.attr("disabled",false);
+		task.load('get_task.php', {course : course_value});      //, page_id : p_id
+		$('#sub_task').css('display', 'block');
+	}
+
+    }
+       
+    function clearlist() {
+	$("#get_task").empty();
+
+    }
+});  
+
+</script>
+
 <section>
     <div class="container">
         <div class="row">
 
             <br/>
 
-            <div class="breadcrumbs">
-                <ol class="breadcrumb">
-                    <li><a href="/admin">Главная страница</a></li>
-
-                </ol>
-            </div>
 
 
             <h4>Посмотреть отчёты по курсу</h4>
@@ -30,8 +60,20 @@
                 <div class="login-form">
                     <form action="#" method="post" enctype="multipart/form-data">
 
-                        <p>Введите название курса</p>
-                        <input type="text" name="courseName" placeholder="" value="">
+                        <label for="courseName">Курс: </label>
+                        <select name="courseName" id="courseName">
+                            <?php 
+                            echo '<option value="">Выберете курс</option>';
+
+                            foreach ($coursesList as $course) {
+                                unset($id, $name);
+                                $id = $course['intCourseID'];
+                                $name = $course['txtCourseName']; 
+                                echo '<option value="'.$id.'">'.$name.'</option>';
+
+                            } 
+                            ?>
+                        </select>
 
                         <br/><br/>
 
@@ -41,7 +83,7 @@
 
                     </form>
                     
-                    <table>
+                    <table id="sub_report">
                         <thead>
                             <tr>
                                 <th>Дата загрузки</th>

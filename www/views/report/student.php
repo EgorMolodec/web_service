@@ -6,13 +6,6 @@
 
             <br/>
 
-            <div class="breadcrumbs">
-                <ol class="breadcrumb">
-                    <li><a href="/admin">Главная страница</a></li>
-
-                </ol>
-            </div>
-
 
             <h4>Посмотреть отчёты по курсу</h4>
 
@@ -30,16 +23,20 @@
                 <div class="login-form">
                     <form action="#" method="post" enctype="multipart/form-data">
 
-                        <p>Выберете курс</p>
-                        <input type="text" name="courseName" placeholder="" value="">             
-                        <br/><br/>
-                        
-                        <p>Выберете задание</p>
-                        <input type="text" name="taskName" placeholder="" value="">
-                        <br/><br/>
-                        
-                        <p>Выберете студента</p>
-                        <input type="text" name="student" placeholder="" value="">
+                        <label for="studentName">Курс: </label>
+                        <select name="studentName" id="studentName">
+                            <?php 
+                            echo '<option value="">Выберете студента</option>';
+
+                            foreach ($studentsList as $student) {
+                                unset($id, $name);
+                                $id = $student['intUserID'];
+                                $name = $student['email']; 
+                                echo '<option value="'.$id.'">'.$name.'</option>';
+
+                            } 
+                            ?>
+                        </select>
                         <br/><br/>
 
                         <input type="submit" name="submit" class="btn btn-default" value="Показать">

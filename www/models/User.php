@@ -91,5 +91,26 @@ class User
             return $result->fetch();
         }
     }
+    
+        /**
+     * Возвращает список курсов
+     * @return array <p>Массив с курсами</p>
+     */
+    public static function getUsersList()
+    {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        // Получение и возврат результатов
+        $result = $db->query('SELECT intUserID, email FROM tblUser ORDER BY intUserID ASC');
+        $usersList = array();
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $usersList[$i]['intUserID'] = $row['intUserID'];
+            $usersList[$i]['email'] = $row['email'];
+            $i++;
+        }
+        return $usersList;
+    }
 
 }

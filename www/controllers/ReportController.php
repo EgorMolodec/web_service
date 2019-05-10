@@ -23,11 +23,15 @@ class ReportController extends AdminBase
     /**
      * Action для страницы "Отчёт по курсу"
      */
-    public function actionCourse()
+    public function actionCourse($courseId = null)
     {       
         // Проверка доступа
         self::checkAdmin();
+        
+        $coursesList = Course::getCoursesList();
+        $reportIDs = Report::getReportsListByCourseId($courseId);
 
+        
         // Обработка формы
         if (isset($_POST['submit'])) {
             // Если форма отправлена
@@ -60,14 +64,16 @@ class ReportController extends AdminBase
     /**
      * Action для страницы "Отчёт по заданию"
      */
-    public function actionTask($task)
+    public function actionTask()
     {       
         // Проверка доступа
         self::checkAdmin();
+        
+        $coursesList = Course::getCoursesList();
 
-        if ($task != NULL) {
-            $reportIDs = Report::getReportsListByTaskId($task);
-        }
+//        if ($task != NULL) {
+//            $reportIDs = Report::getReportsListByTaskId($task);
+//        }
         // Обработка формы
         if (isset($_POST['submit'])) {
             // Если форма отправлена
@@ -105,10 +111,13 @@ class ReportController extends AdminBase
         /**
      * Action для страницы "Отчёт по заданию"
      */
-    public function actionStudent()
+    public function actionStudent($studentID = null)
     {       
         // Проверка доступа
         self::checkAdmin();
+        
+        $studentsList = User::getUsersList();
+        //$reportIDs = Report::getReportsListByUserId($studentId, $courseId, $taskId);
 
         // Обработка формы
         if (isset($_POST['submit'])) {
@@ -137,7 +146,7 @@ class ReportController extends AdminBase
         }
 
         // Подключаем вид
-        require_once(ROOT . '/views/report/task.php');
+        require_once(ROOT . '/views/report/student.php');
         return true;
     }
 }

@@ -8,7 +8,7 @@ and open the template in the editor.
     Author     : user
 */
 
-body {
+body, section {
 		background: #FDF5E6;
 		font-family: Georgia, 'Times New Roman', Times, serif
 	}
@@ -48,6 +48,7 @@ body {
 	}
 	html,
 	body,
+        section,
 	.wrapper {
 		height: 100%;
 	}

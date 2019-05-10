@@ -46,10 +46,11 @@ class Report
         // Текст запроса к БД
         $sql = "SELECT * FROM tblReport WHERE intCourseID = :courseID";
 
-        $result = $db->query($sql);
-
-        // Указываем, что хотим получить данные в виде массива
-        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $db->prepare($sql);
+        $result->bindParam(':intReportID', $intReportID, PDO::PARAM_INT);
+        
+        // Выполнение комaнды
+        $result->execute();
 
         // Получение и возврат результатов
         $i = 0;
@@ -81,10 +82,11 @@ class Report
         // Текст запроса к БД
         $sql = "SELECT * FROM tblReport WHERE intCourseID = :courseID AND intTaskID = :taskID";
 
-        $result = $db->query($sql);
-
-        // Указываем, что хотим получить данные в виде массива
-        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $db->prepare($sql);
+        $result->bindParam(':intReportID', $intReportID, PDO::PARAM_INT);
+        
+        // Выполнение комaнды
+        $result->execute();
 
         // Получение и возврат результатов
         $i = 0;
