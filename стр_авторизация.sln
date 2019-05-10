@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "стр_авторизация", "стр_авторизация\стр_авторизация.vbproj", "{A1FC922E-996D-4FE9-BB3E-66694088B3A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1FC922E-996D-4FE9-BB3E-66694088B3A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1FC922E-996D-4FE9-BB3E-66694088B3A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1FC922E-996D-4FE9-BB3E-66694088B3A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1FC922E-996D-4FE9-BB3E-66694088B3A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BBAE86AC-B76E-4D1F-BD1E-E2F642D259E9}
+	EndGlobalSection
+EndGlobal
