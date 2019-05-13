@@ -40,42 +40,45 @@ $(document).ready(function() {
     <div class="container">
         
         <div class="row">
-            <h1>Кабинет студента</h1>
+            <div  class="container">
+                <h1>Кабинет студента</h1>
+
+                <br><br>
+
+                <h3 style="font-variant: small-caps;font-size: 40px; color: #1E90FF"><?php echo $user['email'];?></h3>
+            </div>
+
+            <div style="margin-left:20px">
+                <form action="#" method="post" enctype="multipart/form-data">
+
+                            <div>
+                                <label for="get_course">Курс: </label>
+                                <select name="get_course" id="get_course">
+                                    <?php 
+                                    echo '<option value="">Выберете курс</option>';
+
+                                    foreach ($coursesList as $course) {
+                                        unset($id, $name);
+                                        $id = $course['intCourseID'];
+                                        $name = $course['txtCourseName']; 
+                                        echo '<option value="'.$id.'">'.$name.'</option>';
+
+                                    } 
+                                    ?>
+                                </select>
+                            </div>   
+
+                            <div id="sub_task">
+                                <label for="get_task">Задание: </label>
+                                <select name="get_task" id="get_task">
+                                </select>
+                            </div>
+
+                            <input type="file" name="file" placeholder="Выбор файла"/>
+                            <input type="submit" name="submit" class="btn btn-default" value="Загрузить и проверить" />
+                        </form>            
+            </div>
             
-            <br><br>
-            
-            <h3>Привет, <?php echo $user['email'];?>!</h3>
-
-            <form action="#" method="post" enctype="multipart/form-data">
-                <input type="text" name="courseName" placeholder="Выбор курса"/>
-                <input type="text" name="taskName" placeholder="Выбор задания"/>
-
-                <div>
-                    <label for="get_course">Курс: </label>
-                    <select name="get_course" id="get_course">
-                        <?php 
-                        echo '<option value="">Выберете курс</option>';
-
-                        foreach ($coursesList as $course) {
-                            unset($id, $name);
-                            $id = $course['intCourseID'];
-                            $name = $course['txtCourseName']; 
-                            echo '<option value="'.$id.'">'.$name.'</option>';
-
-                        } 
-                        ?>
-                    </select>
-                </div>   
-                    
-                <div id="sub_task">
-                    <label for="get_task">Задание: </label>
-                    <select name="get_task" id="get_task">
-                    </select>
-                </div>
-                
-                <input type="file" name="file" placeholder="Выбор файла"/>
-                <input type="submit" name="submit" class="btn btn-default" value="Загрузить и проверить" />
-            </form>
             
         </div>
         
