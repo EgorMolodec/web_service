@@ -44,6 +44,7 @@ return array(
 //    Главная страница преподавателя
     
     'admin' => 'admin/index',
+    'admin/settings' => 'admin/settings',
 
 
     '' => 'user/login',

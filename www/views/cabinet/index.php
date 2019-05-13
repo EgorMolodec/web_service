@@ -41,6 +41,9 @@ $(document).ready(function() {
         
         <div class="row">
             <h1>Кабинет студента</h1>
+            
+            <br><br>
+            
             <h3>Привет, <?php echo $user['email'];?>!</h3>
 
             <form action="#" method="post" enctype="multipart/form-data">

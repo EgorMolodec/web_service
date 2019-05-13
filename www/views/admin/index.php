@@ -32,7 +32,7 @@
                 <li class="btn btn-primary"><a href="/report/task">Отчёт по заданию</a></li>
                 <li class="btn btn-primary"><a href="/report/student">Отчёт по студенту</a></li>
 
-                <li class="btn btn-primary"><a href="/">Настройки</a></li>
+                <li class="btn btn-primary"><a href="/admin/settings">Настройки</a></li>
                 
                 
                 </ul>            
