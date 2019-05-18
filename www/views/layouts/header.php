@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
     <head>
 <link rel='StyleSheet' type='text/css' href='styles.css'>
