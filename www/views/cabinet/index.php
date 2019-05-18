@@ -1,7 +1,6 @@
 <?php include ROOT . '/views/layouts/header.php'; ?>
 
 <script type="text/javascript" src="../../template/js/jquery.js"></script>
-<script type="text/javascript" src="../../template/js/chooseTask.js"></script>
 
 <section>
     <div class="container">
@@ -38,6 +37,7 @@
                             <div id="sub_task">
                                 <label for="get_task">Задание: </label>
                                 <select name="get_task" id="get_task">
+                                    <option value="14"></option>
                                 </select>
                             </div>
 
