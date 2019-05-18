@@ -27,8 +27,8 @@ $(document).ready(function() {
 		task.attr("disabled",true);
 	} else {
 		task.attr("disabled",false);
-                        // task.load('get_task.php',{course : course_value, page_id : p_id});      //, page_id : p_id
-		//$('#sub_task').css('display', 'block');
+                task.load('get_task.php',{course : course_value, page_id : p_id});      //, page_id : p_id
+		$('#sub_task').css('display', 'block');
 	}
 
     }
