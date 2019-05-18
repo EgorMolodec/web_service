@@ -30,13 +30,13 @@
                 <div class="login-form">
                     <form action="#" method="post" enctype="multipart/form-data">
 
-                        <p>Название товара</p>
+                        <p>Название задания</p>
                         <input type="text" name="name" placeholder="" value="">
 
-                        <p>Артикул</p>
+                        <p>Описание</p>
                         <input type="text" name="description" placeholder="" value="">
 
-                        <p>Изображение товара</p>
+                        <p>Файл примера</p>
                         <input type="file" name="example" placeholder="" value="">
 
                         <br/><br/>

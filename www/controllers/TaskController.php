@@ -11,7 +11,7 @@ class TaskController extends AdminBase
      * Action для страницы "Добавить задание"
      */
     public function actionCreate($courseID)
-    {        echo 'kuku';
+    {        //echo 'kuku';
         // Проверка доступа
         self::checkAdmin();
 
