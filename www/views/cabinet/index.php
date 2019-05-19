@@ -53,6 +53,8 @@
                 <thead>
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">Курс</th>
+                            <th scope="col">Задание</th>
                             <th scope="col">Название файла</th>
                             <th scope="col">Дата загрузки</th>
                             <th scope="col">% схожести</th>
@@ -63,16 +65,28 @@
                         $i = 1;
                         foreach ($reportsList as $report): ?>
                         <tr>
-                            <td>$i</td>
+                            <td><?php echo $i; ?></td>
                             <td>
                                 <a href="/upload/.../">
-                                    <?php echo $course['txtCourseName']; ?>
+                                    <?php   $course = Course::getCourseById($report['intCourseID']);
+                                            echo $course['txtCourseName']; ?>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/upload/.../">
+                                    <?php   $task = Task::getTaskById($report['intTaskID']);
+                                            echo $task['txtTaskName']; ?>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="<?php echo $report['txtWorkPath']; ?>">
+                                    <?php echo $report['txtWorkPath']; ?>
                                 </a>
                             </td>
                             <td><?php echo $report['intDate']; ?></td>
                             <td><?php echo $report['txtResult']; $i++; ?></td>
                         </tr>
-                    <?php endforeach; ?>
+                    <?php $i++ ; endforeach; ?>
                 </tbody>
         </table>
     </div>

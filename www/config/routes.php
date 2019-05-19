@@ -46,6 +46,6 @@ return array(
     'admin' => 'admin/index',
     'admin/settings' => 'admin/settings',
 
-
+    'index' => 'user/login',
     '' => 'user/login',
 );

@@ -14,7 +14,7 @@ class Report
     {
         // Соединение с БД
         $db = Db::getConnection();
-
+        
         // Текст запроса к БД
         $sql = 'SELECT * FROM tblReport WHERE intReportID = :id';
 
@@ -59,7 +59,7 @@ class Report
             $reports[$i]['intReportID'] = $row['intReportID'];
             $reports[$i]['intTaskID'] = $row['intTaskID'];
             $reports[$i]['intUserID'] = $row['intUserID'];
-            $reports[$i]['intWorkID'] = $row['intWorkID'];
+            $reports[$i]['txtWorkPath'] = $row['txtWorkPath'];
             $reports[$i]['txtResult'] = $row['txtResult'];
             $reports[$i]['intDate'] = $row['intDate'];
 
@@ -94,7 +94,7 @@ class Report
         while ($row = $result->fetch()) {
             $reports[$i]['intReportID'] = $row['intReportID'];
             $reports[$i]['intUserID'] = $row['intUserID'];
-            $reports[$i]['intWorkID'] = $row['intWorkID'];
+            $reports[$i]['txtWorkPath'] = $row['txtWorkPath'];
             $reports[$i]['txtResult'] = $row['txtResult'];
             $reports[$i]['intDate'] = $row['intDate'];
 
@@ -132,6 +132,7 @@ class Report
             $reportsList[$i]['intReportID'] = $row['intReportID'];
             $reportsList[$i]['intTaskID'] = $row['intTaskID'];
             $reportsList[$i]['intCourseID'] = $row['intCourseID'];
+            $reportsList[$i]['txtWorkPath'] = $row['txtWorkPath'];
             $reportsList[$i]['intUserID'] = $row['intUserID'];
             $reportsList[$i]['txtResult'] = $row['txtResult'];
             $reportsList[$i]['intDate'] = $row['intDate'];            
@@ -153,15 +154,15 @@ class Report
 
         // Текст запроса к БД
         $sql = 'INSERT INTO tblReport '
-                . '(intCourseID, intTaskID, intWorkID, intUserID, txtResult, intDate)'
+                . '(intCourseID, intTaskID, txtWorkPath, intUserID, txtResult, intDate)'
                 . 'VALUES '
-                . '(:intCourseID, :intTaskID, :intWorkID, :intUserID, :txtResult, :intDate)';
+                . '(:intCourseID, :intTaskID, :txtWorkPath, :intUserID, :txtResult, :intDate)';
 
         // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
         $result->bindParam(':intCourseID', $options['intCourseID'], PDO::PARAM_INT);
         $result->bindParam(':intTaskID', $options['intTaskID'], PDO::PARAM_INT);
-        $result->bindParam(':intWorkID', $options['intWorkID'], PDO::PARAM_INT);
+        $result->bindParam(':txtWorkPath', $options['txtWorkPath'], PDO::PARAM_STR);
         $result->bindParam(':intUserID', $options['intUserID'], PDO::PARAM_INT);
         $result->bindParam(':txtResult', $options['txtResult'], PDO::PARAM_STR);
         $result->bindParam(':intDate', $options['intDate'], PDO::PARAM_INT);
@@ -202,7 +203,7 @@ class Report
     
     public static function checkWork($path)
     {
-        
+        $result = 'ok result';
         
         return $result;
     }

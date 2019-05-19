@@ -8,6 +8,7 @@ class CabinetController
         // Получаем идентификатор пользователя из сессии
         $userId = User::checkLogged();
         $coursesList = Course::getCoursesList();
+        //$tasksList = Task::getTasksList();
         $reportsList = Report::getReportsListByUserId($userId);
         
         // Получаем информацию о пользователе из БД
@@ -22,7 +23,7 @@ class CabinetController
             $options['intUserID'] = $userId;
             
             echo 'ok1';
-
+            
             // Флаг ошибок в форме
             $errors = false;
 
@@ -40,8 +41,8 @@ class CabinetController
 
             }
             
-            
-            if ($errors == false) {
+
+   //         if ($errors == false) {
                 // Если ошибок нет
                 echo 'ok2';
                 // Получаем курс и задание по идентификатору
@@ -61,9 +62,9 @@ class CabinetController
                 }
 
                 // Запускаем обработку файла
-                
+                $options['txtWorkPath'] = 1;
                 $options['txtResult'] = Report::checkWork($path . $_FILES["file"]["name"]);
-
+                $options['intDate'] = date("d.m.y");;
                 // Создаём новый отчёт
                 Report::createReport($options);
 
@@ -71,7 +72,7 @@ class CabinetController
                 header("Location: /cabinet/");
             }
 
-        }
+  //      }
         
         require_once(ROOT . '/views/cabinet/index.php');
 
