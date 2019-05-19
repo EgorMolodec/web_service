@@ -50,7 +50,7 @@ class CabinetController
                 $task = Task::getTaskById($options['intTaskID']);
           
                 // Путь к месту хранения файлов
-                $path = ROOT . "/upload/" . $course['txtCourseLatName'] . "/" . $course['txtTaskLatName'] . "/";
+                $path = ROOT . "/upload/" . $course['txtCourseLatName'] . "/" . $task['txtTaskLatName'] . "/";
 
                 // Проверим, загружалось ли через форму изображение
                 if (is_uploaded_file($_FILES["file"]["tmp_name"])) {
@@ -58,13 +58,13 @@ class CabinetController
                     // Если загружалось, переместим его в нужную папке, дадим новое имя
                     //$_SERVER['DOCUMENT_ROOT']
                     move_uploaded_file($_FILES["file"]["tmp_name"],  $path . $_FILES["file"]["name"]);
-                    
+                    $options['txtWorkPath'] = $path . $_FILES["file"]["name"];
                 }
 
                 // Запускаем обработку файла
-                $options['txtWorkPath'] = 1;
+                
                 $options['txtResult'] = Report::checkWork($path . $_FILES["file"]["name"]);
-                $options['intDate'] = date("d.m.y");;
+                $options['intDate'] = date("d.m.y");
                 // Создаём новый отчёт
                 Report::createReport($options);
 
