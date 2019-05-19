@@ -37,7 +37,7 @@
                             <div id="sub_task">
                                 <label for="get_task">Задание: </label>
                                 <select name="get_task" id="get_task">
-                                    <option value="14"></option>
+                                    <option value="14">xnj-nj</option>
                                 </select>
                             </div>
 

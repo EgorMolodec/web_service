@@ -20,21 +20,30 @@ class CabinetController
             $options['intCourseID'] = $_POST['get_course'];
             $options['intTaskID'] = $_POST['get_task'];
             $options['intUserID'] = $userId;
+            
+            echo 'ok1';
 
             // Флаг ошибок в форме
             $errors = false;
 
             // При необходимости можно валидировать значения нужным образом
-            if (!isset($options['get_course']) || empty($options['get_course'])) {
-                $errors[] = 'Заполните поле курса';
+            if ($options['intCourseID'] == null) {
+                //$errors[] = 'Заполните поле курса';
+                $errors = true;
+                echo 'Заполните поле курса';
             }
 
-            if (!isset($options['get_task']) || empty($options['get_task'])) {
-                $errors[] = 'Заполните полe задания';
+            if ($options['intTaskID'] == null) {
+                //$errors[] = 'Заполните полe задания';
+                $errors = true;
+                echo 'Заполните полe задания';
+
             }
+            
+            
             if ($errors == false) {
                 // Если ошибок нет
-                
+                echo 'ok2';
                 // Получаем курс и задание по идентификатору
                 $course = Course::getCourseById($options['intCourseID']);
                 $task = Task::getTaskById($options['intTaskID']);
@@ -48,18 +57,20 @@ class CabinetController
                     // Если загружалось, переместим его в нужную папке, дадим новое имя
                     //$_SERVER['DOCUMENT_ROOT']
                     move_uploaded_file($_FILES["file"]["tmp_name"],  $path . $_FILES["file"]["name"]);
+                    
                 }
 
                 // Запускаем обработку файла
                 
                 $options['txtResult'] = Report::checkWork($path . $_FILES["file"]["name"]);
-                
+
                 // Создаём новый отчёт
                 Report::createReport($options);
-                
+
                 // Перенаправляем пользователя на главную страницу
                 header("Location: /cabinet/");
             }
+
         }
         
         require_once(ROOT . '/views/cabinet/index.php');
