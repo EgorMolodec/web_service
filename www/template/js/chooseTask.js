@@ -1,8 +1,3 @@
-var script = document.createElement('script');
-script.type = 'text/javascript';
-script.src = 'jquery.js';
-document.head.appendChild(script);
-
 $(document).ready(function() {
     $('#sub_task').css('display', 'none');
     
@@ -11,11 +6,8 @@ $(document).ready(function() {
 		var coursevalue = $("#get_course option:selected").val();
 		//if (countryvalue === '') {clearlist(); }
 		if (coursevalue === '') {clearlist(); $('#get_task').css('display', 'none');  }
-		//chooseTask();
-                if (course_value === "") {
-		task.attr("disabled",true);
-	} else {
-		task.attr("disabled",false);}
+		chooseTask();
+                
 	})
     
     function chooseTask(){
@@ -27,7 +19,7 @@ $(document).ready(function() {
 		task.attr("disabled",true);
 	} else {
 		task.attr("disabled",false);
-                task.load('./get_task.php',{course : course_value, page_id : p_id});      //, page_id : p_id
+                task.load('get_task.php',{course : course_value, page_id : p_id});      //, page_id : p_id
 		$('#sub_task').css('display', 'block');
 	}
 

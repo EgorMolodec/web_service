@@ -1,6 +1,6 @@
 <?php include ROOT . '/views/layouts/header.php'; ?>
 
-<script type="text/javascript" src="../../template/js/jquery.js"></script>
+<script type="text/javascript" src="../../template/js/chooseTask.js"></script>
 
 <section>
     <div class="container">
