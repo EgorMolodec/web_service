@@ -6,23 +6,16 @@
 
             <br/>
 
-            <div class="breadcrumbs">
-                <ol class="breadcrumb">
-                    <li><a href="/admin">Главная страница</a></li>
+            <div>
+            <h4>Удалить задание </h4>
 
-                </ol>
-            </div>
-
-
-            <h4>Удалить задание #<?php echo $id; ?></h4>
-
-
+            
             <p>Вы действительно хотите удалить это задание?</p>
 
             <form method="post">
                 <input type="submit" name="submit" value="Удалить" />
             </form>
-
+            </div>
         </div>
     </div>
 </section>

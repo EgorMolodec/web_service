@@ -6,14 +6,8 @@
 
             <br/>
 
-            <div class="breadcrumbs">
-                <ol class="breadcrumb">
-                    <li><a href="/admin">Главная страница</a></li>
-                </ol>
-            </div>
 
-
-            <h4>Редактировать задание #<?php echo $id; ?></h4>
+            <h4>Редактировать задание</h4>
 
             <br/>
 
@@ -24,7 +18,7 @@
                         <p>Название товара</p>
                         <input type="text" name="name" placeholder="" value="<?php echo $task['txtTaskName']; ?>">
 
-                        <p>Артикул</p>
+                        <p>Описание</p>
                         <input type="text" name="description" placeholder="" value="<?php echo $task['txtTaskInfo']; ?>">
 
 

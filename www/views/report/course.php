@@ -5,13 +5,19 @@
 $(document).ready(function() {
     $('#sub_report').css('display', 'none');
     
-    $("#courseName").change(function() {
-		clearlist();
-		var coursevalue = $("#courseName option:selected").val();
+    $("#submit").click(function() {
+		var report = $('#sub_sub_report');
+		var course_value = $("#courseName option:selected").val();
 		//if (countryvalue === '') {clearlist(); }
-		if (coursevalue === '') {clearlist(); $('#get_task').css('display', 'none');  }
-		showReports();
-	})
+		if (coursevalue === '') {
+                    clearlist(); 
+                    //report.css('display', 'none');  
+                }
+		else { 
+                    report.attr('disabled', false);
+                    report.load('../../template/php/showTable.php', {$intCourseID : course_value});
+                }
+    })
     
     function showReports(){
         var course_value = $("#courseName option:selected").val();
@@ -22,7 +28,7 @@ $(document).ready(function() {
 		task.attr("disabled",true);
 	} else {
 		task.attr("disabled",false);
-		task.load('get_task.php', {course : course_value});      //, page_id : p_id
+		      //, page_id : p_id
 		$('#sub_task').css('display', 'block');
 	}
 
@@ -41,8 +47,6 @@ $(document).ready(function() {
         <div class="row">
 
             <br/>
-
-
 
             <h4>Посмотреть отчёты по курсу</h4>
 
@@ -93,24 +97,8 @@ $(document).ready(function() {
                                 <th>Результат</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php foreach ($reportIDs as $report): ?>
-                                <tr>
-                                    <td><?php echo $report['intDate']; ?></td>
-                                    <td>
-                                        <a href="/report/task/<?php echo $report['intTaskID']; ?>">
-                                            <?php echo $report['txtTaskName']; ?>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="/report/student/<?php echo $report['intUserID']; ?>">
-                                            <?php echo $report['intUserID']; ?>
-                                        </a>
-                                    </td>
-                                    <td><?php echo $report['intWorkID']; ?></td>
-                                    <td><?php echo $report['txtResult']; ?></td>
-                                </tr>
-                            <?php endforeach; ?>
+                        <tbody id="sub_sub_report">
+                        
                         </tbody>
                         
                     </table>

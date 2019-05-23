@@ -29,9 +29,7 @@ class ReportController extends AdminBase
         self::checkAdmin();
         
         $coursesList = Course::getCoursesList();
-        $reportIDs = Report::getReportsListByCourseId($courseId);
 
-        
         // Обработка формы
         if (isset($_POST['submit'])) {
             // Если форма отправлена
@@ -49,10 +47,10 @@ class ReportController extends AdminBase
             if ($errors == false) {
                 // Если ошибок нет
                 // Добавляем новый курс
-                $reportIDs = Report::getReportsListByCourseId($courseId);
-                                
+                $reportsList = Report::getReportsListByCourseId($courseId);
+                //Report::showTable($reportsList, $courseId);            
                 // Перенаправляем пользователя на главную страницу
-                //header("Location: '/report/course/" . $courseId);
+                //header("Location: " . $courseId);
             }
         }
 
@@ -149,4 +147,6 @@ class ReportController extends AdminBase
         require_once(ROOT . '/views/report/student.php');
         return true;
     }
+    
+
 }

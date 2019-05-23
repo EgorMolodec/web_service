@@ -6,14 +6,9 @@
 
             <br/>
 
-            <div class="breadcrumbs">
-                <ol class="breadcrumb">
-                    <li><a href="/admin">Главная страница</a></li>
-                </ol>
-            </div>
+            <div>
 
-
-            <h4>Удалить курс #<?php echo $id; ?></h4>
+            <h4>Удалить курс <?php echo $course['txtCourseName']; ?></h4>
 
 
             <p>Вы действительно хотите удалить этот курс?</p>
@@ -22,6 +17,7 @@
                 <input type="submit" name="submit" value="Удалить" />
             </form>
 
+            </div>
         </div>
     </div>
 </section>

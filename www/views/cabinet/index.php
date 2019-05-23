@@ -37,6 +37,13 @@
                             <div id="sub_task">
                                 <label for="get_task">Задание: </label>
                                 <select name="get_task" id="get_task">
+                                    <?php
+                                        echo '<option value="">Выберете курс</option>';
+                                    
+                                    //echo "<script type='text/javascript'>
+                                        //var course_value = $('#get_course option:selected').val();
+                                    //</script>";
+                                    ?>
                                     <option value="14">xnj-nj</option>
                                 </select>
                             </div>
@@ -67,19 +74,17 @@
                         <tr>
                             <td><?php echo $i; ?></td>
                             <td>
-                                <a href="/upload/.../">
                                     <?php   $course = Course::getCourseById($report['intCourseID']);
                                             echo $course['txtCourseName']; ?>
-                                </a>
                             </td>
                             <td>
-                                <a href="/upload/.../">
+
                                     <?php   $task = Task::getTaskById($report['intTaskID']);
                                             echo $task['txtTaskName']; ?>
-                                </a>
+                                
                             </td>
                             <td>
-                                <a href="<?php echo $report['txtWorkPath']; ?>">
+                                <a href="file:////Z:\home\tppo_project.ru\www/upload/TPPO/novoe_zadanie/mysql.sql	">
                                     <?php echo $report['txtWorkPath']; ?>
                                 </a>
                             </td>

@@ -36,9 +36,9 @@
                     
                     
                     
-                    <a href="/task/update/<?php echo $task['intTaskID']; ?>">Редактировать задание</a>
+                    <a href="/task/update/<?php echo $task['intTaskID']; ?>" style="color: black">Редактировать задание</a>
 
-                    <a href="/task/delete/<?php echo $task['intTaskID']; ?>">Удалить задание</a>
+                    <a href="/task/delete/<?php echo $task['intTaskID']; ?>" style="color: black">Удалить задание</a>
 
 
                 </div><!--/product-details-->

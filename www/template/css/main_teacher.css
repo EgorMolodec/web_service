@@ -35,10 +35,10 @@ body, section {
 		border-color:#4169E1;
 	}
 	a{
-		color:white;
+		color:darkblue;
 	}
 	a:visited{
-		color:gray;
+		color:darkred;
 	}
 	a:active{
 		color:black;

@@ -6,13 +6,6 @@
 
             <br/>
 
-            <div class="breadcrumbs">
-                <ol class="breadcrumb">
-                    <li><a href="/admin">Главная страница</a></li>
-
-                </ol>
-            </div>
-
 
             <h4>Добавить новое задание</h4>
 

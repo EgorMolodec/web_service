@@ -1,5 +1,3 @@
-  <div class="page-buffer"></div>
-</div>
 
 <footer id="footer" class="sel col"><!--Footer-->
     <p>&nbsp;</p>
@@ -10,7 +8,7 @@
                             </address>
                     </div>
                     <div class="child1">
-                            <p style="text-align:right;">Copyright&copy;2016</p>
+                            <p style="text-align:right;">Copyright&copy;2019</p>
                     </div>
 </footer><!--/Footer-->
 

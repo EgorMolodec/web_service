@@ -6,14 +6,7 @@
 
             <br/>
 
-            <div class="breadcrumbs">
-                <ol class="breadcrumb">
-                    <li><a href="/admin">Главная страница</a></li>
-
-                </ol>
-            </div>
-
-
+            <div>
             <h4>Редактировать курс "<?php echo $course['txtCourseName']; ?>"</h4>
 
             <br/>
@@ -33,6 +26,7 @@
                         <input type="submit" name="submit" class="btn btn-default" value="Сохранить">
                     </form>
                 </div>
+            </div>
             </div>
         </div>
     </div>

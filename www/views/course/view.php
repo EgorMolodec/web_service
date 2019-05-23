@@ -26,7 +26,7 @@
                                 <?php if ($task['intCourseID'] == $course['intCourseID']) : ?>
     
                             <li>
-                                <a href="/task/view/<?php echo $task['intTaskID']; ?>">
+                                <a href="/task/view/<?php echo $task['intTaskID']; ?>" style="color: black">
                                     <?php echo $task['txtTaskName']; ?>
                                 </a>
                             </li> 
@@ -37,11 +37,11 @@
                     
                     
                     
-                    <a href="/task/create/<?php echo $course['intCourseID']; ?>">Добавить задание</a>
+                    <a href="/task/create/<?php echo $course['intCourseID']; ?>" style="color: black">Добавить задание</a>
                     
-                    <a href="/course/update/<?php echo $course['intCourseID']; ?>">Редактировать курс</a>
+                    <a href="/course/update/<?php echo $course['intCourseID']; ?>" style="color: black">Редактировать курс</a>
 
-                    <a href="/course/delete/<?php echo $course['intCourseID']; ?>">Удалить курс</a>
+                    <a href="/course/delete/<?php echo $course['intCourseID']; ?>" style="color: black">Удалить курс</a>
 
 
                 </div><!--/product-details-->
@@ -51,4 +51,4 @@
     </div>
 </section>
 
-<?php include ROOT . '/views/layouts/footer.php'; ?>
+<?php include ROOT . '/views/layouts/footer_admin.php'; ?>

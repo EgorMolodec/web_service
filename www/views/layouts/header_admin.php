@@ -11,7 +11,7 @@
         <title>Главная страница</title>
         <link href="/template/css/bootstrap.min.css" rel="stylesheet">
         <link href="/template/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/template/css/main_teacher.css" rel="stylesheet">
+        <link href="../../template/css/main_teacher.css" rel="stylesheet">
 
         
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -25,13 +25,20 @@
             <header id="header"><!--header-->
                 <div class="container" style="background: #4169E1; border: 2px solid #4169E1; widht:100%">
                     <p> </p>
-                    <p style="font-variant: small-caps;font-size: 40px; color: white; ">Иванов Иван Иванович <button type="button" class="btn btn-primary" style="background-color: #4682B4; border: 2px solid #4682B4;">Выход</button></p>
+                    <p style="font-variant: small-caps;font-size: 40px; color: white; ">Иванов Иван Иванович</p>
                     <p style="color: #F0F8FF">Некоторая информация</p>
-
+                    <div class="col-sm-8">
+                            <div class="shop-menu pull-right">
+                                <ul class="nav navbar-nav">                                    
+                                        <li><a href="/user/logout/" style="color: white"><i class="fa fa-unlock" class="btn btn-primary" style="background-color: #4682B4; border: 2px solid #4682B4;" style="color: white"></i> Выход</a></li>                                        
+                                </ul>
+                            </div>
+                        </div>
                     <h5>
-                        <a href="/admin"><i class="fa fa-edit"></i> На главную страницу</a>
+                        <a href="/admin" style="color: white"><i class="fa fa-edit"></i> На главную страницу</a>
                     </h5>
 		</div>
+            </header>
 
 
                

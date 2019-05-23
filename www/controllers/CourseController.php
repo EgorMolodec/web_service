@@ -11,7 +11,7 @@ class CourseController extends AdminBase
      * Action для страницы "Добавить курс"
      */
     public function actionCreate()
-    {        echo 'kuku';
+    {        //echo 'kuku';
         // Проверка доступа
         self::checkAdmin();
 

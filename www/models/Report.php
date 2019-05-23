@@ -38,34 +38,35 @@ class Report
      * @param array $courseID <p>Идентификатор курса</p>
      * @return array <p>Массив со списком отчётов</p>
      */
-    public static function getReportsListByCourseId($courseID)
+    public static function getReportsListByCourseId($intCourseID)
     {
         // Соединение с БД
         $db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = "SELECT * FROM tblReport WHERE intCourseID = :courseID";
+
+        $sql = "SELECT * FROM tblReport WHERE intCourseID = :intCourseID";
+
+        // Используется подготовленный запрос
 
         $result = $db->prepare($sql);
-        $result->bindParam(':intReportID', $intReportID, PDO::PARAM_INT);
+        $result->bindParam(':intCourseID', $intCourseID, PDO::PARAM_INT);
         
         // Выполнение комaнды
         $result->execute();
-
-        // Получение и возврат результатов
+        
+        $reportsList = array();
         $i = 0;
-        $reports = array();
         while ($row = $result->fetch()) {
-            $reports[$i]['intReportID'] = $row['intReportID'];
-            $reports[$i]['intTaskID'] = $row['intTaskID'];
-            $reports[$i]['intUserID'] = $row['intUserID'];
-            $reports[$i]['txtWorkPath'] = $row['txtWorkPath'];
-            $reports[$i]['txtResult'] = $row['txtResult'];
-            $reports[$i]['intDate'] = $row['intDate'];
-
+            $reportsList[$i]['intReportID'] = $row['intReportID'];
+            $reportsList[$i]['intTaskID'] = $row['intTaskID'];
+            $reportsList[$i]['txtWorkPath'] = $row['txtWorkPath'];
+            $reportsList[$i]['intUserID'] = $row['intUserID'];
+            $reportsList[$i]['txtResult'] = $row['txtResult'];
+            $reportsList[$i]['intDate'] = $row['intDate'];            
             $i++;
         }
-        return $reports;
+        return $reportsList;
     }
     
     /**
@@ -206,5 +207,41 @@ class Report
         $result = 'ok result';
         
         return $result;
+    }
+    
+        public static function showTable($reportsList, $intCourseID)
+    {
+        echo "<table id='sub_report'>
+                        <thead>
+                            <tr>
+                                <th>Дата загрузки</th>
+                                <th>Задание</th>
+                                <th>Студент</th>
+                                <th>Работа</th>
+                                <th>Результат</th>
+                            </tr>
+                        </thead>
+                        <tbody>";
+                         foreach ($reportsList as $report) {
+                             $task = Task::getTaskById($report['intTaskID']);
+                                echo "<tr>
+                                    <td>" . $report['intDate'] . "</td>" ;
+                                echo "<td>
+                                        <a href='/report/task/" . $report['intTaskID'] . "'>" .
+                                             $task['txtTaskName'] .
+                                        "</a>
+                                    </td>";
+                                echo "<td>
+                                        <a href='/report/student/" . $report['intUserID'] . "'>" .
+                                            $report['intUserID'] .
+                                        "</a>
+                                    </td>";
+                                echo "<td>" . $report['txtWorkPath'] . "</td>
+                                    <td>" . $report['txtResult'] . "</td>
+                                </tr>";
+                        }
+                        echo "</tbody>
+                        
+                    </table>";
     }
 }
