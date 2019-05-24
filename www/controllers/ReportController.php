@@ -23,15 +23,17 @@ class ReportController extends AdminBase
     /**
      * Action для страницы "Отчёт по курсу"
      */
-    public function actionCourse($courseId = null)
+    public function actionCourse($courseId)
     {       
         // Проверка доступа
         self::checkAdmin();
         
         $coursesList = Course::getCoursesList();
 
-        // Обработка формы
-        if (isset($_POST['submit'])) {
+        if ($courseId != null) {
+            $reportsList = Report::getReportsListByCourseId($courseId);
+         }
+         if (isset($_POST['submit'])) {
             // Если форма отправлена
             // Получаем данные из формы
             $courseId = $_POST['courseName'];
@@ -50,9 +52,32 @@ class ReportController extends AdminBase
                 $reportsList = Report::getReportsListByCourseId($courseId);
                 //Report::showTable($reportsList, $courseId);            
                 // Перенаправляем пользователя на главную страницу
-                //header("Location: " . $courseId);
+                header("Location: /report/course/" . $courseId);
             }
         }
+        // Обработка формы
+//        if (isset($_POST['submit'])) {
+//            // Если форма отправлена
+//            // Получаем данные из формы
+//            $courseId = $_POST['courseName'];
+//
+//            // Флаг ошибок в форме
+//            $errors = false;
+//            
+//            // При необходимости можно валидировать значения нужным образом
+//            if (!isset($courseId) || empty($courseId)) {
+//                $errors[] = 'Заполните поля';
+//            }
+//
+//            if ($errors == false) {
+//                // Если ошибок нет
+//                // Добавляем новый курс
+//                $reportsList = Report::getReportsListByCourseId($courseId);
+//                //Report::showTable($reportsList, $courseId);            
+//                // Перенаправляем пользователя на главную страницу
+//                header("Location: /report/course/" . $courseId);
+//            }
+//        }
 
         // Подключаем вид
         require_once(ROOT . '/views/report/course.php');

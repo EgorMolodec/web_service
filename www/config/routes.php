@@ -23,7 +23,7 @@ return array(
 
 //      Управление отчётами
     
-    'report/course' => 'report/course',
+    'report/course' => 'report/course/null',
     'report/course/([0-9]+)' => 'report/course/$1',
     'report/task' => 'report/task',
     'report/task/([0-9]+)' => 'report/task/$1',
@@ -40,6 +40,7 @@ return array(
     
     'cabinet/edit' => 'cabinet/edit',
     'cabinet' => 'cabinet/index',
+    'cabinet/get_task/([0-9]+)' => 'cabinet/get_task/$1',
     
 //    Главная страница преподавателя
     

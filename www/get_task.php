@@ -13,7 +13,5 @@
         {
            echo "<option value='".$row["intTaskID"]."'>".$row["txtTaskName"]."</option>";
         }
-        
-        return $tasksList;
     }   
 ?>

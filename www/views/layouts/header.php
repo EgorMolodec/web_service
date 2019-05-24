@@ -1,6 +1,6 @@
 <html lang="en">
     <head>
-<link rel='StyleSheet' type='text/css' href='styles.css'>
+        <link rel='StyleSheet' type='text/css' href='/template/css/style.css'>
 <meta charset="utf-8">
 <meta name="viewport"
 		  contect="widht=device-widht, user-scalable=no, initial-scale=1.0, maximus-scale=1.0, minimum-scale=1.0">

@@ -50,13 +50,14 @@ class CabinetController
                 $task = Task::getTaskById($options['intTaskID']);
           
                 // Путь к месту хранения файлов
-                $path = ROOT . "/upload/" . $course['txtCourseLatName'] . "/" . $task['txtTaskLatName'] . "/";
+                $path = "/upload/" . $course['txtCourseLatName'] . "/" . $task['txtTaskLatName'] . "/";
 
                 // Проверим, загружалось ли через форму изображение
                 if (is_uploaded_file($_FILES["file"]["tmp_name"])) {
                     mkdir($path . "/example");
                     // Если загружалось, переместим его в нужную папке, дадим новое имя
                     //$_SERVER['DOCUMENT_ROOT']
+                    $options['txtWorkName'] = $_FILES["file"]["name"];
                     move_uploaded_file($_FILES["file"]["tmp_name"],  $path . $_FILES["file"]["name"]);
                     $options['txtWorkPath'] = $path . $_FILES["file"]["name"];
                 }
@@ -74,26 +75,29 @@ class CabinetController
 
   //      }
         
-        require_once(ROOT . '/views/cabinet/index.php');
+        require_once('/views/cabinet/index.php');
 
         return true;
     }  
     
-    
-    public static function chooseTask()
+    public function actionChoose_task($course)
     {
-        if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-            $tasksList = Task::getTasksListByCourse($_POST['course']);
+            echo 'hello';
+        if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) 
+            && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) 
+            && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+        
+        
+        $tasksList = Task::getTasksListByCourse($course);
 
-            echo"<option value=''>выберите task</option>";
+        echo"<option value=''>выберите task</option>";
 
-            while ($row = mysql_fetch_array($result))
-            {
-               echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
-            }
-
+        while ($row = mysql_fetch_array($result))  // mysql_fetch_array
+        {
+           echo "<option value='".$row["intTaskID"]."'>".$row["txtTaskName"]."</option>";
         }
-
+    } 
     }
+
 
 }

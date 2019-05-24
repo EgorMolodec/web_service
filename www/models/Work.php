@@ -10,7 +10,7 @@ class Work
      * @param integer $id <p>id отчёта</p>
      * @return array <p>Массив с информацией об отчёте</p>
      */
-    public static function getReportById($id)
+    public static function getWorkById($id)
     {
         // Соединение с БД
         $db = Db::getConnection();
@@ -47,14 +47,14 @@ class Work
         // Текст запроса к БД
 
         if (empty($courseID)) {
-            $sql = "SELECT * FROM tblReport WHERE intUserID = :userID";
+            $sql = "SELECT * FROM tblWork WHERE intUserID = :userID";
         }
          else {
              if (empty($taskID)) {
-                 $sql = "SELECT * FROM tblReport WHERE intUserID = :userID AND intCourseID = :courseID";
+                 $sql = "SELECT * FROM tblWork WHERE intUserID = :userID AND intCourseID = :courseID";
              }
              else {
-                 $sql = "SELECT * FROM tblReport WHERE intUserID = :userID AND intCourseID = :courseID AND intTaskID = :taskID";
+                 $sql = "SELECT * FROM tblWork WHERE intUserID = :userID AND intCourseID = :courseID AND intTaskID = :taskID";
              }
          }
 

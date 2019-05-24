@@ -1,11 +1,11 @@
-<?php include ROOT . '/views/layouts/header_admin.php'; ?>
+<?php include '/views/layouts/header_admin.php'; ?>
 
 <script type="text/javascript" src="../../template/js/jquery.js"></script>
-<script type="text/javascript">
+<!--script type="text/javascript">
 $(document).ready(function() {
-    $('#sub_report').css('display', 'none');
+    //$('#sub_report').css('display', 'none');
     
-    $("#submit").click(function() {
+   $("#btn").click(function() {
 		var report = $('#sub_sub_report');
 		var course_value = $("#courseName option:selected").val();
 		//if (countryvalue === '') {clearlist(); }
@@ -40,7 +40,7 @@ $(document).ready(function() {
     }
 });  
 
-</script>
+</script-->
 
 <section>
     <div class="container">
@@ -87,7 +87,7 @@ $(document).ready(function() {
 
                     </form>
                     
-                    <table id="sub_report">
+                    <table id="sub_report" class="table table-striped">
                         <thead>
                             <tr>
                                 <th>Дата загрузки</th>
@@ -98,7 +98,25 @@ $(document).ready(function() {
                             </tr>
                         </thead>
                         <tbody id="sub_sub_report">
-                        
+                            <?php //if ($courseId != null): ?>
+                                <?php foreach ($reportsList as $report): $task = Task::getTaskById($report['intTaskID']); ?>
+                                    <tr>
+                                        <td><?php $report['intDate']; ?></td>
+                                        <td>
+                                            <a href='/report/task/<?php $report['intTaskID']; ?>'>
+                                                <?php $task['txtTaskName']; ?>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href='/report/student/<?php $report['intUserID']; ?>'>
+                                                <?php $report['intUserID']; ?>
+                                            </a>
+                                        </td>
+                                        <td><?php $report['txtWorkPath']; ?></td>
+                                        <td><?php $report['txtResult']; ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php //endif; ?>
                         </tbody>
                         
                     </table>

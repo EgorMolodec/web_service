@@ -61,6 +61,7 @@ class Report
             $reportsList[$i]['intReportID'] = $row['intReportID'];
             $reportsList[$i]['intTaskID'] = $row['intTaskID'];
             $reportsList[$i]['txtWorkPath'] = $row['txtWorkPath'];
+            $reportsList[$i]['txtWorkName'] = $row['txtWorkName'];
             $reportsList[$i]['intUserID'] = $row['intUserID'];
             $reportsList[$i]['txtResult'] = $row['txtResult'];
             $reportsList[$i]['intDate'] = $row['intDate'];            
@@ -96,6 +97,7 @@ class Report
             $reports[$i]['intReportID'] = $row['intReportID'];
             $reports[$i]['intUserID'] = $row['intUserID'];
             $reports[$i]['txtWorkPath'] = $row['txtWorkPath'];
+            $reports[$i]['txtWorkName'] = $row['txtWorkName'];
             $reports[$i]['txtResult'] = $row['txtResult'];
             $reports[$i]['intDate'] = $row['intDate'];
 
@@ -134,6 +136,7 @@ class Report
             $reportsList[$i]['intTaskID'] = $row['intTaskID'];
             $reportsList[$i]['intCourseID'] = $row['intCourseID'];
             $reportsList[$i]['txtWorkPath'] = $row['txtWorkPath'];
+            $reportsList[$i]['txtWorkName'] = $row['txtWorkName'];
             $reportsList[$i]['intUserID'] = $row['intUserID'];
             $reportsList[$i]['txtResult'] = $row['txtResult'];
             $reportsList[$i]['intDate'] = $row['intDate'];            
