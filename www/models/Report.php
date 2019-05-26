@@ -113,7 +113,7 @@ class Report
      * @return array <p>Массив со списком отчётов</p>
      */
     
-        public static function getReportsListByUserId($userID)
+        public static function getReportsListByStudentId($userID)
     {
         // Соединение с БД
         $db = Db::getConnection();
@@ -134,8 +134,8 @@ class Report
         $i = 0;
         while ($row = $result->fetch()) {
             $reportsList[$i]['intReportID'] = $row['intReportID'];
-            $reportsList[$i]['intTaskID'] = $row['intTaskID'];
             $reportsList[$i]['intCourseID'] = $row['intCourseID'];
+            $reportsList[$i]['intTaskID'] = $row['intTaskID'];
             $reportsList[$i]['txtWorkPath'] = $row['txtWorkPath'];
             $reportsList[$i]['txtWorkName'] = $row['txtWorkName'];
             $reportsList[$i]['intUserID'] = $row['intUserID'];

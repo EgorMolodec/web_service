@@ -5,8 +5,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//echo '<p>hello</p>';
-require_once '../../models/Report.php';
+
+include_once('../../models/Report.php');
+include_once('../../components/Db.php');
+
 
         $reportsList = Report::getReportsListByCourseId($_POST[$intCourseID]);
 

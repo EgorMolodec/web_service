@@ -96,8 +96,8 @@ class User
     }
     
         /**
-     * Возвращает список курсов
-     * @return array <p>Массив с курсами</p>
+     * Возвращает список пользователей
+     * @return array <p>Массив с пользователями</p>
      */
     public static function getUsersList()
     {
@@ -112,6 +112,35 @@ class User
             $usersList[$i]['intUserID'] = $row['intUserID'];
             $usersList[$i]['email'] = $row['email'];
             $i++;
+        }
+        return $usersList;
+    }
+    
+    /**
+     * Возвращает список студентов
+     * @return array <p>Массив сo студентами</p>
+     */
+        public static function getStudentsList()
+    {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        $rules = 0;
+        // Получение и возврат результатов
+        $result = $db->query('SELECT * FROM tblUser ORDER BY intUserID ASC');       //  WHERE boolRoot = :rules
+        $usersList = array();
+        
+        // Выполнение комaнды
+        $result->execute();
+        
+        $i = 0;
+        while ($row = $result->fetch()) {
+            if ($row['boolRoot'] == 0) {
+                $usersList[$i]['intUserID'] = $row['intUserID'];
+                $usersList[$i]['email'] = $row['email'];
+                $i++;
+            }
+
         }
         return $usersList;
     }

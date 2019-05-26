@@ -29,18 +29,21 @@ return array(
     'report/task/([0-9]+)' => 'report/task/$1',
     'report/student' => 'report/student',
     'report/student/([0-9]+)' => 'report/student/$1',
-    'report/student/([0-9]+)/([0-9]+)' => 'report/student/$1/$2',
-    'report/student/([0-9]+)/([0-9]+)/([0-9]+)' => 'report/student/$1/$2/$3',
+//    'report/student/([0-9]+)/([0-9]+)' => 'report/student/$1/$2',
+//    'report/student/([0-9]+)/([0-9]+)/([0-9]+)' => 'report/student/$1/$2/$3',
     
     //'report/showTable' => 'report/course',
     'report/showTable/([0-9]+)' => 'report/showTable/$1',
+    'report/showCourseTable/([0-9]+)' => 'report/showCourseTable/$1',
+    'report/showStudentTable/([0-9]+)' => 'report/showStudentTable/$1',
+    'report/showTaskTable/([0-9]+)/([0-9]+)' => 'report/showTaskTable/$1/$2',
 //      
     'user/login' => 'user/login',
     'user/logout' => 'user/logout',
     
 //    Страница студента
     
-    'cabinet/edit' => 'cabinet/edit',
+    //'cabinet/edit' => 'cabinet/edit',
     'cabinet' => 'cabinet/index',
     'cabinet/get_task/([0-9]+)' => 'cabinet/get_task/$1',
     
@@ -48,6 +51,8 @@ return array(
     
     'admin' => 'admin/index',
     'admin/settings' => 'admin/settings',
+    
+   
 
     'index' => 'user/login',
     '' => 'user/login',
