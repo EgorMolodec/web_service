@@ -1,6 +1,7 @@
 <?php include '/views/layouts/header_admin.php'; ?>
 
-<script type="text/javascript" src="../../template/js/jquery.js"></script>
+<script type="text/javascript" src="/template/js/jquery.js"></script>
+<!--script type="text/javascript" src="/template/js/getReportsForCourse.js"></script-->
 <!--script type="text/javascript">
 $(document).ready(function() {
     //$('#sub_report').css('display', 'none');
@@ -42,6 +43,26 @@ $(document).ready(function() {
 
 </script-->
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#send").click(function(){
+                var course_value = $("#courseName option:selected").val();
+
+                if (course_value !== "") {
+                    $.post("/template/php/showTable.php", { intCourseID: course_value },           //"/report/showCourseTable/"+course_value
+                                function(data) {
+                                     alert(data) ; 
+                                     $("#sub_sub_report").html(data); 
+                                })
+                }
+                else {
+                    alert("No reports"); 
+                }
+        });
+    })
+    
+</script>
+
 <section>
     <div class="container">
         <div class="row">
@@ -62,20 +83,21 @@ $(document).ready(function() {
 
             <div class="col-lg-4">
                 <div class="login-form">
-                    <form action="#" method="post" enctype="multipart/form-data">
+                    <!--form action="#" method="post" enctype="multipart/form-data">
 
                         <label for="courseName">Курс: </label>
                         <select name="courseName" id="courseName">
+                    
                             <?php 
-                            echo '<option value="">Выберете курс</option>';
-
-                            foreach ($coursesList as $course) {
-                                unset($id, $name);
-                                $id = $course['intCourseID'];
-                                $name = $course['txtCourseName']; 
-                                echo '<option value="'.$id.'">'.$name.'</option>';
-
-                            } 
+//                            echo '<option value="">Выберете курс</option>';
+//
+//                            foreach ($coursesList as $course) {
+//                                unset($id, $name);
+//                                $id = $course['intCourseID'];
+//                                $name = $course['txtCourseName']; 
+//                                echo '<option value="'.$id.'">'.$name.'</option>';
+//
+//                            } 
                             ?>
                         </select>
 
@@ -85,7 +107,23 @@ $(document).ready(function() {
 
                         <br/><br/>
 
-                    </form>
+                    </form-->
+                    
+                    <label for="courseName">Курс: </label>
+                                <select name="courseName" id="courseName">
+                                    <?php 
+                                    echo '<option value="">Выберете курс</option>';
+
+                                    foreach ($coursesList as $course) {
+                                        unset($id, $name);
+                                        $id = $course['intCourseID'];
+                                        $name = $course['txtCourseName']; 
+                                        echo '<option value="'.$id.'">'.$name.'</option>';
+
+                                    } 
+                                    ?>
+                                </select>
+                    <button id="send">Показать</button>
                     
                     <table id="sub_report" class="table table-striped">
                         <thead>
@@ -98,25 +136,30 @@ $(document).ready(function() {
                             </tr>
                         </thead>
                         <tbody id="sub_sub_report">
-                            <?php //if ($courseId != null): ?>
-                                <?php foreach ($reportsList as $report): $task = Task::getTaskById($report['intTaskID']); ?>
-                                    <tr>
-                                        <td><?php $report['intDate']; ?></td>
-                                        <td>
-                                            <a href='/report/task/<?php $report['intTaskID']; ?>'>
-                                                <?php $task['txtTaskName']; ?>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href='/report/student/<?php $report['intUserID']; ?>'>
-                                                <?php $report['intUserID']; ?>
-                                            </a>
-                                        </td>
-                                        <td><?php $report['txtWorkPath']; ?></td>
-                                        <td><?php $report['txtResult']; ?></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            <?php //endif; ?>
+                            <?php 
+//                                foreach ($reportsList as $report) {
+//                                    $task = Task::getTaskById($report['intTaskID']);
+//                                    echo "<tr>
+//                                            <td>" . $report['intDate'] . "</td>
+//                                            <td>
+//                                                <a href='/report/task/" . $report['intTaskID'] . "'>"
+//                                                    . $task['txtTaskName'] .
+//                                                "</a>
+//                                            </td>
+//                                            <td>
+//                                                <a href='/report/student/" . $report['intUserID'] . "'>"
+//                                                    . $report['intUserID'] .
+//                                                "</a>
+//                                            </td>
+//                                            <td>" . $report['txtWorkPath'] . "</td>
+//                                            <td>" . $report['txtResult'] . "</td>
+//                                        </tr>";
+//                                }
+//                                
+//                                
+//             
+                            ?>
+
                         </tbody>
                         
                     </table>

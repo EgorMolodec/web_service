@@ -1,26 +1,45 @@
 <?php include ROOT . '/views/layouts/header.php'; ?>
 
-<!--script type="text/javascript" src="../../template/js/chooseTask.js"></script-->
-<script type="text/javascript">
-    $(document).ready(function(){
-        $(get_course).change(function(){
-            var course_val = $("#get_course option:selected").val();
-//            $(get_task).load("/cabinet/get_task/" + course_val, {});
-//            $.post("get_task.php", { course: course_val }, function (data) {
-//                $("#get_task").html(data);
-//            })
-            var data1 = $.ajax({
-                    type: "POST",
-                    url: "get_task.php",
-                    data: { course: course_val},
-                    async: false,
-                     dataType: "html"
+<!--script type="text/javascript">
+        $(document).ready(function () {
 
-                        });
-            data1.done(function(msg) { $(get_task).html(msg); });
-        })
-    })
-</script>
+            $('#sub_task').css('display', 'none');
+            //$('#sub_city').css('display', 'none');
+
+            $("#get_course").change(function() {
+                            clearlist();
+                            //$('#sub_city').css('display', 'none');		
+                            var course_value = $("#get_course option:selected").val();
+                            //if (countryvalue === '') {clearlist(); }
+                            if (course_value === '') {clearlist(); $('#sub_task').css('display', 'none');  }
+                            getTask();
+                    })
+            //getarea();
+            //getcity();
+
+            function getTask() {
+                    var course_value = $("#get_course option:selected").val();
+                    var p_id = $("#page_id").val();
+                    var task = $("#get_task");
+                    var getTask_value = task.val();
+                    if (course_value === "") {
+                            task.attr("disabled",true);
+                    } else {
+                            task.attr("disabled",false);
+                            task.load('/views/cabinet/get_task.php',{intCourseID : course_value, page_id : p_id});
+                            $('#sub_task').css('display', 'block');
+                    }
+            }
+
+            function clearlist() {
+                    $("#get_task").empty();
+
+            }	
+
+
+            });
+    </script-->
+<script type="text/javascript" src="/template/js/chooseTask.js"></script>
 <section>
     <div class="container">
         
@@ -53,15 +72,12 @@
                                 </select>
                             </div>   
 
-                            <div id="sub_task">
-                                <label for="get_task">Задание: </label>
-                                <select name="get_task" id="get_task">
-                                    <?php
-                                        echo '<option value="">Выберете курс</option>';                                    
-                                    ?>
-                                    <option value="14">xnj-nj</option>
-                                </select>
-                            </div>
+                    <div id="sub_task">
+                    
+                        <label for="get_task">Задание</label>
+                        <select id="get_task" name="get_task">
+                        </select>
+                    </div>
 
                             <input type="file" name="file" placeholder="Выбор файла"/>
                             <input type="submit" name="submit" class="btn btn-default" value="Загрузить и проверить" />

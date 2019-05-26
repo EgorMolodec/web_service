@@ -5,8 +5,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-echo 'hello';
-        $reportsList = Report::getReportsListByCourseId($intCourseID);
+//echo '<p>hello</p>';
+require_once '../../models/Report.php';
+
+        $reportsList = Report::getReportsListByCourseId($_POST[$intCourseID]);
 
          foreach ($reportsList as $report) {
              $task = Task::getTaskById($report['intTaskID']);

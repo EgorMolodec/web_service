@@ -42,7 +42,7 @@ class Report
     {
         // Соединение с БД
         $db = Db::getConnection();
-
+        
         // Текст запроса к БД
 
         $sql = "SELECT * FROM tblReport WHERE intCourseID = :intCourseID";
@@ -67,6 +67,7 @@ class Report
             $reportsList[$i]['intDate'] = $row['intDate'];            
             $i++;
         }
+        
         return $reportsList;
     }
     

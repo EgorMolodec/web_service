@@ -44,6 +44,9 @@ class User
         if (isset($_SESSION['user'])) {
             return $_SESSION['user'];
         }
+        else {
+            header("Location: /user/login");
+        }
 
         header("Location: /user/login");
     }

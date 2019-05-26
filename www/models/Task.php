@@ -28,7 +28,7 @@ class Task
         
         $tasksList = array();
         $i = 0;
-        while ($row = $result->fetch()) {
+        while ($row = mysql_fetch_array($result)) {
             $tasksList[$i]['intTaskID'] = $row['intTaskID'];
             $tasksList[$i]['txtTaskName'] = $row['txtTaskName'];
             $tasksList[$i]['txtTaskLatName'] = $row['txtTaskLatName'];

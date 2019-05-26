@@ -32,6 +32,8 @@ return array(
     'report/student/([0-9]+)/([0-9]+)' => 'report/student/$1/$2',
     'report/student/([0-9]+)/([0-9]+)/([0-9]+)' => 'report/student/$1/$2/$3',
     
+    //'report/showTable' => 'report/course',
+    'report/showTable/([0-9]+)' => 'report/showTable/$1',
 //      
     'user/login' => 'user/login',
     'user/logout' => 'user/logout',
