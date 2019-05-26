@@ -159,15 +159,16 @@ class Report
 
         // Текст запроса к БД
         $sql = 'INSERT INTO tblReport '
-                . '(intCourseID, intTaskID, txtWorkPath, intUserID, txtResult, intDate)'
+                . '(intCourseID, intTaskID, txtWorkPath, txtWorkName, intUserID, txtResult, intDate)'
                 . 'VALUES '
-                . '(:intCourseID, :intTaskID, :txtWorkPath, :intUserID, :txtResult, :intDate)';
+                . '(:intCourseID, :intTaskID, :txtWorkPath, :txtWorkName, :intUserID, :txtResult, :intDate)';
 
         // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
         $result->bindParam(':intCourseID', $options['intCourseID'], PDO::PARAM_INT);
         $result->bindParam(':intTaskID', $options['intTaskID'], PDO::PARAM_INT);
         $result->bindParam(':txtWorkPath', $options['txtWorkPath'], PDO::PARAM_STR);
+        $result->bindParam(':txtWorkName', $options['txtWorkName'], PDO::PARAM_STR);
         $result->bindParam(':intUserID', $options['intUserID'], PDO::PARAM_INT);
         $result->bindParam(':txtResult', $options['txtResult'], PDO::PARAM_STR);
         $result->bindParam(':intDate', $options['intDate'], PDO::PARAM_INT);

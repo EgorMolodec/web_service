@@ -4,12 +4,17 @@
     <div class="wrapper">
         <div class="row">
             
-            <br/>
-            
-            <p>Настройки</p>
-            
-            <br/>
-            
+            <p>&nbsp;</p>
+            <div style="margin-left:40px">
+                <button type="button" class="btn btn-primary ">Назначить преподавателя</button>
+                <p>&nbsp;</p>
+                <button type="button" class="btn btn-primary">Настройка степени уникальности</button>
+                <p>&nbsp;</p>
+                <button type="button" class="btn btn-primary">Настройка временного промежутка</button>
+                <p>&nbsp;</p>
+                <button type="button" class="btn btn-primary" style="background-color: #FFD700; border: 2px solid #FFD700; color:black">Сохранить</button>
+                <p>&nbsp;</p>
+            </div>
 
             
         </div>

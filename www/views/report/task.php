@@ -1,5 +1,28 @@
 <?php include ROOT . '/views/layouts/header_admin.php'; ?>
 
+<script type="text/javascript">
+    $(document).ready(function(){
+        //$("#sub_task").css('display', 'none');
+        
+        $("#send").click(function(){
+            $("#taskName").empty();
+            
+            var course_value = $("#courseName option:selected").val();
+            
+            if (course_value !== ''){
+                $("#sub_task").css('display', 'block');
+                $("#taskName").css('disabled', false);
+                $("#taskName").load('/template/php/get_task.php',{ intCourseID: course_value} );
+            }
+            else {
+                $("#taskName").empty();
+                $("#taskName").css('disabled', true);
+                $("#sub_task").css('display', 'none');
+            }
+        })
+    })
+</script>
+
 <section>
     <div class="container">
         <div class="row">
@@ -20,11 +43,10 @@
 
             <div class="col-lg-4">
                 <div class="login-form">
-                    <form action="#" method="post" enctype="multipart/form-data">
-
-                        <label for="courseName">Курс: </label>
-                        <select name="courseName" id="courseName">
-                            <?php 
+                    
+                    <label>Курс</label>
+                    <select id="courseName" name="courseName">
+                        <?php 
                             echo '<option value="">Выберете курс</option>';
 
                             foreach ($coursesList as $course) {
@@ -34,47 +56,29 @@
                                 echo '<option value="'.$id.'">'.$name.'</option>';
 
                             } 
-                            ?>
-                        </select>
-
-                        <label for="courseName">Курс: </label>
-                        <select name="taskName" id="taskName">
-                        </select>
-
-                        <input type="submit" name="submit" class="btn btn-default" value="Показать">
-
-                        <br/><br/>
-
-                    </form>
+                        ?>
+                    </select>
                     
-                    <table>
+                    <div id="sub_task">
+                        <label for="taskName">Задание</label>
+                        <select id="taskName" name="taskName">
+                            
+                        </select>
+                    </div>
+                    
+                    <button id="send">Показать</button>
+                    
+                    <table id="sub_report" class="table table-striped">
                         <thead>
                             <tr>
                                 <th>Дата загрузки</th>
-                                <th>Задание</th>
                                 <th>Студент</th>
                                 <th>Работа</th>
                                 <th>Результат</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php foreach ($reportIDs as $report): ?>
-                                <tr>
-                                    <td><?php echo $report['intDate']; ?></td>
-                                    <td>
-                                        <a href="/report/task/<?php echo $report['intTaskID']; ?>">
-                                            <?php echo $report['txtTaskName']; ?>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="/report/student/<?php echo $report['intUserID']; ?>">
-                                            <?php echo $report['intUserID']; ?>
-                                        </a>
-                                    </td>
-                                    <td><?php echo $report['intWorkID']; ?></td>
-                                    <td><?php echo $report['txtResult']; ?></td>
-                                </tr>
-                            <?php endforeach; ?>
+                        <tbody id="sub_sub_report">
+
                         </tbody>
                         
                         

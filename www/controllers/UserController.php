@@ -66,26 +66,13 @@ class UserController
         header("Location: /");
     }
     
-    public static function uploadFile()
+    public static function actionUploadFile($one, $two, $three)
     {
-        $coursesList = Course::getCoursesList();
-        
-        //$path = ROOT . "/upload/" . $course['txtCourseLatName'] . "/" . $task['txtTaskLatName'];
+       
+        // Путь к файлу
+        $path = '/upload/' . $one . '/' . $two . '/' . $three;
 
-        // Обработка формы
-        if (isset($_POST['submit'])) {
-            // Если форма отправлена
-            $course = $_POST['course'];
-            $task = $_POST['task'];
-            
-            $task = Task::getTaskByID($task['id']);
-            $course = Course::getCourseById($course['id']);
-            // Удаляем задание
-            Task::deleteTaskById($id);
-            Task::deleteDirByPath($path);
-
-            // Перенаправляем пользователя на страницу курса
-            header("Location: /course/view/" . $task['intCourseID']);
-        }
+        // Возвращаем путь изображения-пустышки
+        return $path;
     }
 }

@@ -22,21 +22,19 @@ class AdminController extends AdminBase
         return true;
     }
     
-        /**
+    /**
      * Action для страницы настроек
      */
     public function actionSettings()
     {
         // Проверка доступа
-        if(self::checkAdmin()) {
-            header("Location: /views/admin/settings.php");
-        
-
-            $coursesList = Course::getCoursesList();
-
-            // Подключаем вид
-            require_once(ROOT . '/views/admin/index.php');
-            return true;
+        if(!self::checkAdmin()) {
+            header("Location: /cabinet/");
         }
+        
+        
+                // Подключаем вид
+        require_once(ROOT . '/views/admin/settings.php');
+        return true;
     }
 }

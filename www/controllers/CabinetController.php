@@ -9,7 +9,7 @@ class CabinetController
         $userId = User::checkLogged();
         $coursesList = Course::getCoursesList();
         //$tasksList = Task::getTasksList();
-        $reportsList = Report::getReportsListByUserId($userId);
+        $reportsList = Report::getReportsListByStudentId($userId);
         
         // Получаем информацию о пользователе из БД
         $user = User::getUserById($userId);
@@ -42,7 +42,7 @@ class CabinetController
 
    //         if ($errors == false) {
                 // Если ошибок нет
-                echo 'ok2';
+                //echo 'ok2';
                 // Получаем курс и задание по идентификатору
                 $course = Course::getCourseById($options['intCourseID']);
                 $task = Task::getTaskById($options['intTaskID']);

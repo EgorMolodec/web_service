@@ -52,7 +52,7 @@ return array(
     'admin' => 'admin/index',
     'admin/settings' => 'admin/settings',
     
-   
+    'upload/([A-Za-z0-9]+)/([A-Za-z0-9]+)/([A-Za-z0-9.]+)' => 'user/uploadFile/$1/$2/$3',
 
     'index' => 'user/login',
     '' => 'user/login',

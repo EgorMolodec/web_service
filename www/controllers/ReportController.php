@@ -30,71 +30,6 @@ class ReportController extends AdminBase
         
         $coursesList = Course::getCoursesList();
         
-        /*if ($courseId != null) {
-            $reportsList = Report::getReportsListByCourseId($intCourseID);
-                //var_dump($reportsList) ;
-
-                if ($reportsList != NULL) {
-                    
-                    foreach ($reportsList as $report) {
-                     $task = Task::getTaskById($report['intTaskID']);
-                        echo "<tr>
-                            <td>" . $report['intDate'] . "</td>" ;
-                        echo "<td>
-                                <a href='/report/task/" . $report['intTaskID'] . "'>" .
-                                     $task['txtTaskName'] .
-                                "</a>
-                            </td>";
-                        echo "<td>
-                                <a href='/report/student/" . $report['intUserID'] . "'>" .
-                                    $report['intUserID'] .
-                                "</a>
-                            </td>";
-                        echo "<td>" . $report['txtWorkPath'] . "</td>
-                            <td>" . $report['txtResult'] . "</td>
-                        </tr>";
-
-                    }
-                }
-                else {
-
-                    echo '<tr><td></td>'
-                                . '<td></td>'
-                                . '<td></td>'
-                                . '<td></td>'
-                                . '<td></td>'
-                            . '</tr>';
-                    //header("Location: /report/course");
-                }
-        }*/
-
-        /*if ($courseId != null) {
-            $reportsList = Report::getReportsListByCourseId($courseId);
-            
-         }
-         if (isset($_POST['submit'])) {
-            // Если форма отправлена
-            // Получаем данные из формы
-            $courseId = $_POST['courseName'];
-
-            // Флаг ошибок в форме
-            $errors = false;
-            
-            // При необходимости можно валидировать значения нужным образом
-            if (!isset($courseId) || empty($courseId)) {
-                $errors[] = 'Заполните поля';
-            }
-
-            if ($errors == false) {
-                // Если ошибок нет
-                // Добавляем новый курс
-                //$reportsList = Report::getReportsListByCourseId($courseId);
-                
-                //Report::showTable($reportsList, $courseId);            
-                // Перенаправляем пользователя на главную страницу
-                header("Location: /report/course/");
-            }
-        }*/
         // Обработка формы
         /*if (isset($_POST['submit'])) {
             // Если форма отправлена
@@ -119,7 +54,6 @@ class ReportController extends AdminBase
             }
         } */
         
-
         // Подключаем вид
         require_once(ROOT . '/views/report/course.php');
         return true;
@@ -175,7 +109,7 @@ class ReportController extends AdminBase
         /**
      * Action для страницы "Отчёт по заданию"
      */
-    public function actionStudent($studentID = null)
+    public function actionStudent()
     {       
         // Проверка доступа
         self::checkAdmin();
@@ -237,16 +171,21 @@ class ReportController extends AdminBase
                             $report['intUserID'] .
                         "</a>
                     </td>";
-                echo "<td>" . $report['txtWorkPath'] . "</td>
-                    <td>" . $report['txtResult'] . "</td>
+                echo "<td>"
+                        . "<a href=" . $report['txtWorkPath'] . "'>" .
+                            $report['txtWorkName'] 
+                        . "</a>"
+                    . "</td>";
+                echo    "<td>" . $report['txtResult'] . "</td>
+                    
                 </tr>";
         }
-     
+        
+        
         return true;
     }
     
-    public function actionShowStudentTable($intUserID){
-        //echo 'hello';
+    public function actionShowStudentTable($intStudentID){
         $reportsList = Report::getReportsListByStudentId($intUserID);
         
         if ($reportsList == null) {
@@ -281,4 +220,6 @@ class ReportController extends AdminBase
      
         return true;
     }
+
+        
 }

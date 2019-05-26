@@ -51,6 +51,10 @@ class TaskController extends AdminBase
                 $options['latName'] = $nameDir;
             
                 // Создаём папку для загрузки файлов в данное задание
+                
+                if (!file_exists(ROOT . "/upload/" . $course['txtCourseLatName'])) {
+                    mkdir(ROOT . "/upload/" . $course['txtCourseLatName']);
+                }
             
                 $path = ROOT . "/upload/" . $course['txtCourseLatName'] . "/" . $nameDir;
                 mkdir($path);
