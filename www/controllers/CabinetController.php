@@ -48,21 +48,21 @@ class CabinetController
                 $task = Task::getTaskById($options['intTaskID']);
           
                 // Путь к месту хранения файлов
-                $path = "/upload/" . $course['txtCourseLatName'] . "/" . $task['txtTaskLatName'] . "/";
+                $path = "/upload/" . $course['txtCourseLatName'] . "/" . $task['txtTaskLatName'] . "/" . $user["email"] . "/";
 
                 // Проверим, загружалось ли через форму изображение
                 if (is_uploaded_file($_FILES["file"]["tmp_name"])) {
-                    mkdir($path . "/example");
+                    mkdir($path . $user['email']);
                     // Если загружалось, переместим его в нужную папке, дадим новое имя
                     //$_SERVER['DOCUMENT_ROOT']
                     $options['txtWorkName'] = $_FILES["file"]["name"];
-                    move_uploaded_file($_FILES["file"]["tmp_name"],  $path . $_FILES["file"]["name"]);
-                    $options['txtWorkPath'] = $path . $_FILES["file"]["name"];
+                    move_uploaded_file($_FILES["file"]["tmp_name"],  $path . $user['email'] . '/' . $_FILES["file"]["name"]);
+                    $options['txtWorkPath'] = $path . $user['email'] . '/' . $_FILES["file"]["name"];
                 }
 
                 // Запускаем обработку файла
                 
-                $options['txtResult'] = Report::checkWork($path . $_FILES["file"]["name"]);
+                $options['txtResult'] = Report::checkWork($path . $user['email'] . '/' . $_FILES["file"]["name"]);
                 $options['intDate'] = date("d.m.y");
                 // Создаём новый отчёт
                 Report::createReport($options);

@@ -1,0 +1,122 @@
+.signup-form{
+	max-width: 400px;
+	padding: 15 px;
+	margin: 0 auto;
+}
+body, section {
+	background: #FDF5E6;
+	font-family: Georgia, 'Times New Roman', Times, serif
+}
+header{
+	widht: 100%
+}
+.child{
+	height: 10px;
+	display: inline-block;
+	width: 69%;
+}
+.child1{
+	height: 10px;
+	display: inline-block;
+	width: 30%;
+}
+.sel{
+	background-clip:padding-box;
+	border-width:10px
+}
+.col{
+	background-color:#4169E1;
+	border-color:#4169E1;
+}
+a{
+	color:white;
+}
+a:visited{
+	color:black;
+}
+a:active{
+	color:black;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+html,
+body,
+section,
+.wrapper {
+	height: 100%;
+}
+.content {
+	box-sizing: border-box;
+	min-height: 100%;
+	padding-bottom: 90px;
+}
+.footer {
+	height: 80px;
+	margin-top: -80px;
+}
+.btn-signin {
+	background-color: #48D1CC; 
+	border: 2px solid #48D1CC;
+}
+.header-prep {
+	background: #4169E1; 
+	widht: 100%;
+}
+.cont-prep {
+	border: 2px solid #4169E1;
+}
+.prep-main-font {
+	font-variant: small-caps;
+	font-size: 40px; 
+	color: white; 
+}
+.prep-inf-font {
+	color: #F0F8FF;
+}
+.prep-exit {
+	background-color: #4682B4; 
+	border: 2px solid #4682B4;
+	color: white;
+}
+.prep-btn {
+	margin-left: 30px;
+}
+.btn-set {
+	background-color: #FFD700; 
+	border: 2px solid #FFD700; 
+	color:black
+}
+.btn-otch {
+	background-color: #DC143C; 
+	border: 2px solid #DC143C;
+}
+.btn-new {
+	background-color: #1E90FF; 
+	border: 2px solid #1E90FF;
+}
+.stud-main-font {
+	font-variant: small-caps;
+	font-size: 40px; 
+	color: #1E90FF
+}
+.header-stud {
+	background: #87CEFA; 
+	widht: 100%;
+}
+.cont-stud {
+	border: 2px solid #87CEFA;
+}
+.cw {
+	color:white;
+}
+.cntr {
+	box-sizing: border-box;
+	padding-bottom: 90px;
+	background: black; 
+}
+.st {
+	font-size:20px;
+	
+}

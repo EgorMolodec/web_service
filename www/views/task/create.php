@@ -2,15 +2,11 @@
 
 <section>
     <div class="container">
+	<p>&nbsp;</p>
         <div class="row">
-
             <br/>
-
-
             <h4>Добавить новое задание</h4>
-
             <br/>
-
             <?php if (isset($errors) && is_array($errors)): ?>
                 <ul>
                     <?php foreach ($errors as $error): ?>
@@ -25,14 +21,14 @@
 
                         <p>Название задания</p>
                         <input type="text" name="name" placeholder="" value="">
-
+                        <p> </p>
                         <p>Описание</p>
                         <input type="text" name="description" placeholder="" value="">
-
+                        <p> </p>
                         <p>Файл примера</p>
                         <input type="file" name="example" placeholder="" value="">
 
-                        <br/><br/>
+                        <p>&nbsp;</p>
 
                         <input type="submit" name="submit" class="btn btn-default" value="Сохранить">
 

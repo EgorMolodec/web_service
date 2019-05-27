@@ -2,10 +2,9 @@
 
 <section>
     <div class="container">
+	<p>&nbsp;</p>
         <div class="row">
-
             <br/>
-
             <div>
             <h4>Редактировать курс "<?php echo $course['txtCourseName']; ?>"</h4>
 

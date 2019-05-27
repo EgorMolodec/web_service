@@ -2,14 +2,11 @@
 
 <section>
     <div class="container">
+	<p>&nbsp;</p>
         <div class="row">
-
             <br/>
-
-            <h4>Добавить новый курс</h4>
-
+		    <h4>Добавить новый курс</h4>
             <br/>
-
             <?php if (isset($errors) && is_array($errors)): ?>
                 <ul>
                     <?php foreach ($errors as $error): ?>
@@ -24,14 +21,14 @@
 
                         <p>Название</p>
                         <input type="text" name="name" placeholder="" value="">
-
+                        <p>&nbsp;</p>
                         <p>Описание</p>
                         <input type="text" name="description" placeholder="" value="">
 
                         <br><br>
                         
 
-                        <input type="submit" name="submit" class="btn btn-default" value="Сохранить">
+                        <input type="submit" name="submit" class="btn btn-new" style="color:white" value="Сохранить">
                     </form>
                     
                 </div>

@@ -1,6 +1,7 @@
 <?php include ROOT . '/views/layouts/header_admin.php'; ?>
 
-<script type="text/javascript">
+<script type="text/javascript" src="/template/js/chooseTask.js"></script>
+<!--script type="text/javascript">
     $(document).ready(function(){
         //$("#sub_task").css('display', 'none');
         
@@ -10,18 +11,18 @@
             var course_value = $("#courseName option:selected").val();
             
             if (course_value !== ''){
-                $("#sub_task").css('display', 'block');
-                $("#taskName").css('disabled', false);
+                //$("#sub_task").css('display', 'block');
+                //$("#taskName").css('disabled', false);
                 $("#taskName").load('/template/php/get_task.php',{ intCourseID: course_value} );
             }
             else {
                 $("#taskName").empty();
-                $("#taskName").css('disabled', true);
-                $("#sub_task").css('display', 'none');
+                //$("#taskName").css('disabled', true);
+                //$("#sub_task").css('display', 'none');
             }
         })
     })
-</script>
+</script-->
 
 <section>
     <div class="container">
@@ -43,10 +44,11 @@
 
             <div class="col-lg-4">
                 <div class="login-form">
-                    
-                    <label>Курс</label>
-                    <select id="courseName" name="courseName">
-                        <?php 
+
+                    <div>
+                        <label for="get_course">Курс: </label>
+                        <select name="get_course" id="get_course">
+                            <?php 
                             echo '<option value="">Выберете курс</option>';
 
                             foreach ($coursesList as $course) {
@@ -56,13 +58,14 @@
                                 echo '<option value="'.$id.'">'.$name.'</option>';
 
                             } 
-                        ?>
-                    </select>
-                    
+                            ?>
+                        </select>
+                    </div>   
+
                     <div id="sub_task">
-                        <label for="taskName">Задание</label>
-                        <select id="taskName" name="taskName">
-                            
+                    
+                        <label for="get_task">Задание</label>
+                        <select id="get_task" name="get_task">
                         </select>
                     </div>
                     

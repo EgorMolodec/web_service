@@ -3,12 +3,9 @@
 <section>
     <div class="container">
         <div class="row">
-
-
             <div class="col-sm-9 padding-right">
                 <div class="product-details"><!--product-details-->
                     <div class="row">
-
                         <div class="col-sm-7">
                             <div class="product-information"><!--/product-information-->
                                 <h2><?php echo $course['txtCourseName'];?></h2>
@@ -19,8 +16,16 @@
                         <div class="col-sm-12">
                             <h5>Описание курса</h5>
                             <?php echo $course['txtCourseInfo'];?>
+                            <p>&nbsp;</p>
                         </div>
-                        
+                        <div class="col-sm-12">
+                            <a href="/task/create/<?php echo $course['intCourseID']; ?>" style="color:blue">Добавить задание</a>
+                             &ensp;				
+                             <a href="/course/update/<?php echo $course['intCourseID']; ?>" style="color: green">Редактировать курс</a>
+                             &ensp;		
+                            <a href="/course/delete/<?php echo $course['intCourseID']; ?>" style="color: red">Удалить курс</a>
+                            <p>&nbsp;</p>
+                       </div>
                         <ul>
                             <?php foreach ($tasksList as $task): ?>
                                 <?php if ($task['intCourseID'] == $course['intCourseID']) : ?>
@@ -34,15 +39,6 @@
                             <?php endforeach; ?>
                         </ul>
                     </div>
-                    
-                    
-                    
-                    <a href="/task/create/<?php echo $course['intCourseID']; ?>" style="color: black">Добавить задание</a>
-                    
-                    <a href="/course/update/<?php echo $course['intCourseID']; ?>" style="color: black">Редактировать курс</a>
-
-                    <a href="/course/delete/<?php echo $course['intCourseID']; ?>" style="color: black">Удалить курс</a>
-
 
                 </div><!--/product-details-->
 

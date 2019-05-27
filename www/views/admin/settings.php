@@ -2,7 +2,7 @@
 
 <section>
     <div class="wrapper">
-        <div class="row">
+        <div class="content">
             
             <p>&nbsp;</p>
             <div style="margin-left:40px">

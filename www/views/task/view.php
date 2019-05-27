@@ -3,21 +3,18 @@
 <section>
     <div class="container">
         <div class="row">
-            </div>
-
             <div class="col-sm-9 padding-right">
                 <div class="product-details"><!--product-details-->
                     <div class="row">
-
                         <div class="col-sm-7">
                             <div class="product-information"><!--/product-information-->
-                                <h2><?php echo $course['txtCourseName'];?></h2>
+                                <h3><?php echo $course['txtCourseName'];?></h3>
                             </div><!--/product-information-->
                         </div>
                         
                         <div class="col-sm-7">
                             <div class="product-information"><!--/product-information-->
-                                <h2><?php echo $task['txtTaskName'];?></h2>
+                                <h4><?php echo $task['txtTaskName'];?></h4>
                             </div><!--/product-information-->
                         </div>
                     </div>
@@ -29,16 +26,38 @@
                         
                          <div class="col-sm-12">
                             <h5>Пример</h5>
-                            <a href="/upload/<?php echo $course['txtCourseLatName'];?>/"></a>
+                            <?php 
+                                   $path = "/upload/" . $course['txtCourseLatName'] . "/" . $task['txtTaskLatName'] . "/example";
+                                   $result = array(); 
+
+                                   $cdir = scandir($path); 
+                                   foreach ($cdir as $key => $value) 
+                                   { 
+                                      if (!in_array($value,array(".",".."))) 
+                                      { 
+                                         if (is_dir($path . DIRECTORY_SEPARATOR . $value)) 
+                                         { 
+                                            $result[$value] = dirToArray($path . DIRECTORY_SEPARATOR . $value); 
+                                         } 
+                                         else 
+                                         { 
+                                            $result[] = $value; 
+                                         } 
+                                      } 
+                                   }
+                                   
+                                   foreach ($result as $file){
+                                       echo "<a href='" . $path . $file . "'>" . $file . "</a>";
+                                   }
+                            ?>
+                            <!--a href="/upload/<?php //echo $course['txtCourseLatName'];?>/<?php //echo $task['txtTaskLatName'];?>/example"></a-->
                         </div>
                     </div>
-                    
-                    
-                    
-                    
-                    <a href="/task/update/<?php echo $task['intTaskID']; ?>" style="color: black">Редактировать задание</a>
-
-                    <a href="/task/delete/<?php echo $task['intTaskID']; ?>" style="color: black">Удалить задание</a>
+                    <p>&nbsp;</p>
+    
+                    <a href="/task/update/<?php echo $task['intTaskID']; ?>" style="color: green">Редактировать задание</a>
+                    &ensp; 	&ensp; 
+                    <a href="/task/delete/<?php echo $task['intTaskID']; ?>" style="color: red">Удалить задание</a>
 
 
                 </div><!--/product-details-->

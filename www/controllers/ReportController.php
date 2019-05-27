@@ -167,7 +167,7 @@ class ReportController extends AdminBase
                         "</a>
                     </td>";
                 echo "<td>
-                        <a href='/report/student/" . $report['intUserID'] . "'>" .
+                        <a href='/report/showStudentTable/" . $report['intUserID'] . "'>" .
                             $report['intUserID'] .
                         "</a>
                     </td>";
@@ -186,7 +186,7 @@ class ReportController extends AdminBase
     }
     
     public function actionShowStudentTable($intStudentID){
-        $reportsList = Report::getReportsListByStudentId($intUserID);
+        $reportsList = Report::getReportsListByStudentId($intStudentID);
         
         if ($reportsList == null) {
             $msg = "У данного студента нет загруженных отчётов";
@@ -217,7 +217,9 @@ class ReportController extends AdminBase
                     <td>" . $report['txtResult'] . "</td>
                 </tr>";
         }
-     
+        
+        echo '<script type="text/javascript">$("#studentName").</script>';
+        require_once(ROOT . '/views/report/student.php');
         return true;
     }
 

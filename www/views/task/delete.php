@@ -2,14 +2,12 @@
 
 <section>
     <div class="container">
+	<p>&nbsp;</p>
         <div class="row">
-
             <br/>
-
             <div>
             <h4>Удалить задание </h4>
 
-            
             <p>Вы действительно хотите удалить это задание?</p>
 
             <form method="post">

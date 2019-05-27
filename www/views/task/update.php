@@ -2,29 +2,23 @@
 
 <section>
     <div class="container">
+	<p>&nbsp;</p>
         <div class="row">
-
             <br/>
-
-
             <h4>Редактировать задание</h4>
-
             <br/>
-
             <div class="col-lg-4">
                 <div class="login-form">
                     <form action="#" method="post" enctype="multipart/form-data">
 
                         <p>Название товара</p>
                         <input type="text" name="name" placeholder="" value="<?php echo $task['txtTaskName']; ?>">
-
+                        <p>&nbsp;</p>
                         <p>Описание</p>
                         <input type="text" name="description" placeholder="" value="<?php echo $task['txtTaskInfo']; ?>">
-
-
+                        <p>&nbsp;</p>
                         <p>Пример</p>
 
-                        
                         <br/><br/>
                         
                         <input type="submit" name="submit" class="btn btn-default" value="Сохранить">

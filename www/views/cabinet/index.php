@@ -1,17 +1,10 @@
-<?php include ROOT . '/views/layouts/header.php'; ?>
+<?php include ROOT . '/views/layouts/header_stud.php'; ?>
 
 <script type="text/javascript" src="/template/js/chooseTask.js"></script>
 <section>
     <div class="container">
         
         <div class="row">
-            <div  class="container">
-                <h1>Кабинет студента</h1>
-                <p id="pika"></p>
-                <br><br>
-
-                <h3 style="font-variant: small-caps;font-size: 40px; color: #1E90FF"><?php echo $user['email'];?></h3>
-            </div>
 
             <div style="margin-left:20px">
                 <form action="#" method="post" enctype="multipart/form-data">
@@ -31,8 +24,10 @@
                                     } 
                                     ?>
                                 </select>
-                            </div>   
-
+                            </div> 
+                    
+                    <p>&nbsp;</p>
+                    
                     <div id="sub_task">
                     
                         <label for="get_task">Задание</label>
@@ -40,13 +35,15 @@
                         </select>
                     </div>
 
+                        <p>&nbsp;</p>
                             <input type="file" name="file" placeholder="Выбор файла"/>
+                        <p>&nbsp;</p> 
                             <input type="submit" name="submit" class="btn btn-default" value="Загрузить и проверить" />
                         </form>            
-            </div>
-            
-            
+            </div>    
         </div>
+        
+        <p>&nbsp;</p>
         
                 <table class="table table-striped">
                 <thead>

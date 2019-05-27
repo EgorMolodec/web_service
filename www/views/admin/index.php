@@ -1,46 +1,43 @@
 <?php include ROOT . '/views/layouts/header_admin.php'; ?>
 
-<link rel="stylesheet" href="/template/css/main_teacher.css">
-
+<link rel="stylesheet" href="/template/css/main_style.css">
 <section>
     <div class="wrapper">
-        <div class="row">
-            
-            <br/>
-            
-            <!--p>Добрый день!</p>
-            
-            <br/>
-            
-            <p>Вам доступны такие возможности:</p-->
-            <p>         </p>
-            <br/>
-            
-            
-                <ul>
-                <li class="btn btn-primary"><a href="/course/create/" style="color: white">Добавить курс</a></li>
-                <li class="btn btn-primary dropdown-toggle" >
-                    <ul>
-                        <?php foreach ($coursesList as $course): ?>
-                        <li>
-                            <a href="/course/view/<?php echo $course['intCourseID']; ?>" style="color: white">
-                                <?php echo $course['txtCourseName']; ?>
-                            </a>
-                        </li>
-                            <?php endforeach; ?>
-                    </ul>
-                </li>
-                <li class="btn btn-primary"><a href="/report/course" style="color: white">Отчёт по курсу</a></li>
-                <li class="btn btn-primary"><a href="/report/task" style="color: white">Отчёт по заданию</a></li>
-                <li class="btn btn-primary"><a href="/report/student" style="color: white">Отчёт по студенту</a></li>
+        <div class="content">
+            <p>&nbsp;</p>
+            			<a class="btn btn-primary prep-btn btn-new" href="/course/create/" style="color: white">Добавить курс</a>
+				<p>&nbsp;</p>
+				
+				<div class="dropdown prep-btn">
+					<button class="btn btn-primary dropdown-toggle btn-new" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Выбрать курс
+					</button>
 
-                <li class="btn btn-primary"><a href="/admin/settings" style="color: white">Настройки</a></li>
-                
-                
-                </ul>            
-            
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">			
+						<?php foreach ($coursesList as $course): ?>
+							<a class="dropdown-item" href="/course/view/<?php echo $course['intCourseID']; ?>" >
+								<?php echo $course['txtCourseName']; ?>
+							</a>
+						<?php endforeach; ?>
+					</div>		
+				</div>
+				<p>&nbsp;</p>
 
-            
+				<a class="btn btn-primary prep-btn btn-otch" href="/report/course">Отчёт по курсу</a></li>
+				<p>&nbsp;</p>
+
+				<a class="btn btn-primary prep-btn btn-otch" href="/report/task">Отчёт по заданию</a></li>
+				<p>&nbsp;</p>
+
+				<a class="btn btn-primary prep-btn btn-otch" href="/report/student">Отчёт по студенту</a></li>
+				<p>&nbsp;</p>
+
+                                <a class="btn btn-primary prep-btn btn-set" style="color:black;" href="/admin/settings">Настройки</a></li>
+				<p>&nbsp;</p>                                   
+			</div>
+		</div>
+	</div>
+
         </div>
     </div>
 </section>
