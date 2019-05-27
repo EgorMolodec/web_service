@@ -1,28 +1,8 @@
 <?php include ROOT . '/views/layouts/header_admin.php'; ?>
 
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 <script type="text/javascript" src="/template/js/chooseTask.js"></script>
-<!--script type="text/javascript">
-    $(document).ready(function(){
-        //$("#sub_task").css('display', 'none');
-        
-        $("#send").click(function(){
-            $("#taskName").empty();
-            
-            var course_value = $("#courseName option:selected").val();
-            
-            if (course_value !== ''){
-                //$("#sub_task").css('display', 'block');
-                //$("#taskName").css('disabled', false);
-                $("#taskName").load('/template/php/get_task.php',{ intCourseID: course_value} );
-            }
-            else {
-                $("#taskName").empty();
-                //$("#taskName").css('disabled', true);
-                //$("#sub_task").css('display', 'none');
-            }
-        })
-    })
-</script-->
 
 <section>
     <div class="container">

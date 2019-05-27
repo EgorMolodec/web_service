@@ -25,32 +25,36 @@
                         </div>
                         
                          <div class="col-sm-12">
-                            <h5>Пример</h5>
+                           
                             <?php 
-                                   $path = "/upload/" . $course['txtCourseLatName'] . "/" . $task['txtTaskLatName'] . "/example";
+                                   $path =  "/upload/" . $course['txtCourseLatName'] . "/" . $task['txtTaskLatName'] . "/example";
                                    $result = array(); 
 
-                                   $cdir = scandir($path); 
-                                   foreach ($cdir as $key => $value) 
-                                   { 
-                                      if (!in_array($value,array(".",".."))) 
-                                      { 
-                                         if (is_dir($path . DIRECTORY_SEPARATOR . $value)) 
-                                         { 
-                                            $result[$value] = dirToArray($path . DIRECTORY_SEPARATOR . $value); 
-                                         } 
-                                         else 
-                                         { 
-                                            $result[] = $value; 
-                                         } 
-                                      } 
+                                   if (file_exists(ROOT . $path)) {
+                                       $cdir = scandir(ROOT . $path); 
+                                       foreach ($cdir as $key => $value) 
+                                       { 
+                                          if (!in_array($value,array(".",".."))) 
+                                          { 
+                                             if (is_dir(ROOT . $path . DIRECTORY_SEPARATOR . $value)) 
+                                             { 
+                                                $result[$value] = dirToArray(ROOT . $path . DIRECTORY_SEPARATOR . $value); 
+                                             } 
+                                             else 
+                                             { 
+                                                $result[] = $value; 
+                                             } 
+                                          } 
+                                       }
+
+                                       echo ' <h5>Пример</h5>';
+                                       foreach ($result as $file){
+                                           echo "<a href='" . $path . "/" . $file . "' style='color:blue' download>" . $file . "</a>";
+                                       }
                                    }
                                    
-                                   foreach ($result as $file){
-                                       echo "<a href='" . $path . $file . "'>" . $file . "</a>";
-                                   }
                             ?>
-                            <!--a href="/upload/<?php //echo $course['txtCourseLatName'];?>/<?php //echo $task['txtTaskLatName'];?>/example"></a-->
+                            
                         </div>
                     </div>
                     <p>&nbsp;</p>

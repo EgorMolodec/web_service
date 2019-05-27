@@ -34,7 +34,15 @@ class CourseController extends AdminBase
                 $nameDir = Course::latinize($options['name']);
             }
             
-            mkdir(ROOT . "/upload/" . $nameDir);
+            if (file_exists(ROOT . "/upload/" . $course['txtCourseLatName'])) {
+                    $nameDir = $nameDir . 'new';
+                    mkdir(ROOT . "/upload/" . $course['txtCourseLatName']);
+                    
+            }
+            else {
+               mkdir(ROOT . "/upload/" . $nameDir); 
+            }
+            
             
             $options['latName'] = $nameDir;
 

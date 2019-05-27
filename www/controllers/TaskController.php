@@ -54,11 +54,13 @@ class TaskController extends AdminBase
                 
                 if (!file_exists(ROOT . "/upload/" . $course['txtCourseLatName'])) {
                     mkdir(ROOT . "/upload/" . $course['txtCourseLatName']);
+                    
                 }
             
                 $path = ROOT . "/upload/" . $course['txtCourseLatName'] . "/" . $nameDir;
+                
                 mkdir($path);
-             
+                mkdir($path . "/example");
             
                 $id = Task::createTask($options);
                 

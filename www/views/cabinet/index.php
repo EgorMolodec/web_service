@@ -73,7 +73,7 @@
                                 
                             </td>
                             <td>
-                                <a href="<?php echo $report['txtWorkPath']; ?>">
+                                <a href="<?php echo $report['txtWorkPath']; ?>" download>
                                     <?php echo $report['txtWorkName']; ?>
                                 </a>
                             </td>

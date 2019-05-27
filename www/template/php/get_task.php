@@ -1,25 +1,5 @@
 <?php 
 
-
-    //            if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) 
-//                && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) 
-//                && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-//
-//        $db = Db::getConnection();
-//        //require_once("db_inc.php");
-//
-//
-//        $result = mysql_query("SELECT * FROM tblTask WHERE `intCourseID`='".$_POST["intCourseID"]."' ");
-//
-//           echo"<option value=''>choose task</option>";
-//
-//        while ($row = mysql_fetch_array($result))  // mysql_fetch_array
-//        {
-//           echo "<option value='".$row["intTaskID"]."'>".$row["txtTaskName"]."</option>";
-//        }
-//
-//        } 
-
         if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) 
                         && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) 
                         && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
@@ -47,6 +27,7 @@
 
 
         } 
+        
 
 ?>
 
