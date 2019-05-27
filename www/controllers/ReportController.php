@@ -1,12 +1,10 @@
 <?php
-
 /**
  * Контроллер ReportController
  * Управление отчётами 
  */
 class ReportController extends AdminBase
 {
-
     /**
      * Action для страницы "Управление курсами"
      */
@@ -14,28 +12,26 @@ class ReportController extends AdminBase
     {
         // Проверка доступа
         self::checkAdmin();
-
         // Подключаем вид
         require_once(ROOT . '/views/admin_product/index.php');
         return true;
     }
-
     /**
      * Action для страницы "Отчёт по курсу"
      */
-    public function actionCourse()
+    public function actionCourse($courseId)
     {       
         // Проверка доступа
         self::checkAdmin();
         
         $coursesList = Course::getCoursesList();
-        
-        // Обработка формы
-        /*if (isset($_POST['submit'])) {
-            // Если форма отправлена
+        if ($courseId != null) {
+            $reportsList = Report::getReportsListByCourseId($courseId);
+        }
+        if (isset($_POST['submit'])) {
+			// Если форма отправлена
             // Получаем данные из формы
             $courseId = $_POST['courseName'];
-
             // Флаг ошибок в форме
             $errors = false;
             
@@ -43,7 +39,6 @@ class ReportController extends AdminBase
             if (!isset($courseId) || empty($courseId)) {
                 $errors[] = 'Заполните поля';
             }
-
             if ($errors == false) {
                 // Если ошибок нет
                 // Добавляем новый курс
@@ -52,13 +47,34 @@ class ReportController extends AdminBase
                 // Перенаправляем пользователя на главную страницу
                 header("Location: /report/course/" . $courseId);
             }
-        } */
-        
+        }
+        //Обработка формы
+        //if (isset($_POST['submit'])) {
+        //	//Если форма отправлена
+        //	//Получаем данные из формы
+        //	$courseId = $_POST['courseName'];
+        //
+        //	// Флаг ошибок в форме
+        //	$errors = false;
+        //      
+        //	// При необходимости можно валидировать значения нужным образом
+        //	if (!isset($courseId) || empty($courseId)) {
+        // 	   $errors[] = 'Заполните поля';
+        //	}
+  		//
+        //	if ($errors == false) {
+        // 	   // Если ошибок нет
+        //  	  // Добавляем новый курс
+        //  	  $reportsList = Report::getReportsListByCourseId($courseId);
+        //  	  //Report::showTable($reportsList, $courseId);            
+        //  	  // Перенаправляем пользователя на главную страницу
+        // 	   header("Location: /report/course/" . $courseId);
+        //   }
+        //}
         // Подключаем вид
         require_once(ROOT . '/views/report/course.php');
         return true;
     }
-
     /**
      * Action для страницы "Отчёт по заданию"
      */
@@ -68,17 +84,16 @@ class ReportController extends AdminBase
         self::checkAdmin();
         
         $coursesList = Course::getCoursesList();
-
-//        if ($task != NULL) {
-//            $reportIDs = Report::getReportsListByTaskId($task);
-//        }
+        //if ($task != NULL) {
+            //$reportIDs = Report::getReportsListByTaskId($task);
+        //}
+		
         // Обработка формы
-        /*if (isset($_POST['submit'])) {
+        if (isset($_POST['submit'])) {
             // Если форма отправлена
             // Получаем данные из формы
             $courseId = $_POST['courseName'];
             $taskId = $_POST['taskName'];
-
             // Флаг ошибок в форме
             $errors = false;
             
@@ -86,11 +101,9 @@ class ReportController extends AdminBase
             if (!isset($courseId) || empty($courseId)) {
                 $errors[] = 'Заполните поля';
             }
-            
             if (!isset($taskId) || empty($taskId)) {
                 $errors[] = 'Заполните поля';
             }
-
             if ($errors == false) {
                 // Если ошибок нет
                 // Добавляем новый курс
@@ -99,32 +112,29 @@ class ReportController extends AdminBase
                 // Перенаправляем пользователя на главную страницу
                 //header("Location: /admin/");
             }
-        }*/
-
+        }
         // Подключаем вид
         require_once(ROOT . '/views/report/task.php');
         return true;
     }
     
-        /**
-     * Action для страницы "Отчёт по заданию"
-     */
-    public function actionStudent()
+    /**
+    * Action для страницы "Отчёт по заданию"
+    */
+    public function actionStudent($studentID = null)
     {       
         // Проверка доступа
         self::checkAdmin();
         
-        $studentsList = User::getStudentsList();
+        $studentsList = User::getUsersList();
         //$reportIDs = Report::getReportsListByUserId($studentId, $courseId, $taskId);
-        
         // Обработка формы
-        /*if (isset($_POST['submit'])) {
+        if (isset($_POST['submit'])) {
             // Если форма отправлена
             // Получаем данные из формы
             $courseId = $_POST['courseName'];
             $taskId = $_POST['taskName'];
             $studentId = $_POST['student'];
-
             // Флаг ошибок в форме
             $errors = false;
             
@@ -132,7 +142,6 @@ class ReportController extends AdminBase
             if (!isset($studentId) || empty($studentId)) {
                 $errors[] = 'Заполните поля';
             }
-
             if ($errors == false) {
                 // Если ошибок нет
                 // Добавляем новый курс
@@ -141,85 +150,9 @@ class ReportController extends AdminBase
                 // Перенаправляем пользователя на главную страницу
                 //header("Location: /admin/");
             }
-        }*/
-
+        }
         // Подключаем вид
         require_once(ROOT . '/views/report/student.php');
         return true;
     }
-    
-    
-    public function actionShowCourseTable($intCourseID){
-        $reportsList = Report::getReportsListByCourseId($intCourseID);
-        
-        if ($reportsList == null) {
-            $msg = "По данному курсу нет отчётов";
-            echo $msg;
-        }
-        
-        foreach ($reportsList as $report) {
-             $task = Task::getTaskById($report['intTaskID']);
-                echo "<tr>
-                    <td>" . $report['intDate'] . "</td>" ;
-                echo "<td>
-                        <a href='/report/task/" . $report['intTaskID'] . "'>" .
-                             $task['txtTaskName'] .
-                        "</a>
-                    </td>";
-                echo "<td>
-                        <a href='/report/student/" . $report['intUserID'] . "'>" .
-                            $report['intUserID'] .
-                        "</a>
-                    </td>";
-                echo "<td>"
-                        . "<a href=" . $report['txtWorkPath'] . "'>" .
-                            $report['txtWorkName'] 
-                        . "</a>"
-                    . "</td>";
-                echo    "<td>" . $report['txtResult'] . "</td>
-                    
-                </tr>";
-        }
-        
-        
-        return true;
-    }
-    
-    public function actionShowStudentTable($intStudentID){
-        $reportsList = Report::getReportsListByStudentId($intUserID);
-        
-        if ($reportsList == null) {
-            $msg = "У данного студента нет загруженных отчётов";
-            echo $msg;
-        }
-        
-        foreach ($reportsList as $report) {
-            $course = Course::getCourseById($report['intCourseID']);
-             $task = Task::getTaskById($report['intTaskID']);
-                echo "<tr>
-                    <td>" . $report['intDate'] . "</td>" ;
-                echo "<td>
-                        <a href='/report/course/" . $report['intCourseID'] . "'>" .
-                             $course['txtCourseName'] .
-                        "</a>
-                    </td>";
-                echo "<td>
-                        <a href='/report/task/" . $report['intTaskID'] . "'>" .
-                             $task['txtTaskName'] .
-                        "</a>
-                    </td>";
-//                echo "<td>
-//                        <a href='/report/student/" . $report['intUserID'] . "'>" .
-//                            $report['intUserID'] .
-//                        "</a>
-//                    </td>";
-                echo "<td>" . $report['txtWorkPath'] . "</td>
-                    <td>" . $report['txtResult'] . "</td>
-                </tr>";
-        }
-     
-        return true;
-    }
-
-        
 }
