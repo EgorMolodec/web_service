@@ -7,7 +7,7 @@ class CabinetController
         $userId = User::checkLogged();
         $coursesList = Course::getCoursesList();
         //$tasksList = Task::getTasksList();
-        $reportsList = Report::getReportsListByUserId($userId);
+        $reportsList = Report::getReportsListByStudentId($userId);
         
         // Получаем информацию о пользователе из БД
         $user = User::getUserById($userId);
