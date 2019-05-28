@@ -55,8 +55,11 @@
                                 unset($id, $name);
                                 $id = $course['intCourseID'];
                                 $name = $course['txtCourseName']; 
-                                echo '<option value="'.$id.'">'.$name.'</option>';
-
+                                
+                                if($intCourseID == $id) 
+                                    echo '<option value="'.$id.'" selected="true">'.$name.'</option>';
+                                else 
+                                    echo '<option value="'.$id.'">'.$name.'</option>';
                             } 
                             ?>
                         </select>

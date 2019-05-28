@@ -35,26 +35,31 @@ class CabinetController
             }
             //if ($errors == false) {
                 // Если ошибок нет
-                echo 'ok2';
+                
                 // Получаем курс и задание по идентификатору
                 $course = Course::getCourseById($options['intCourseID']);
                 $task = Task::getTaskById($options['intTaskID']);
           
                 // Путь к месту хранения файлов
-                $path = "/upload/" . $course['txtCourseLatName'] . "/" . $task['txtTaskLatName'] . "/" . $user["email"] . "/";
-
+                $path = ROOT . "/upload/" . $course['txtCourseLatName'] . "/" . $task['txtTaskLatName'] . "/" . $user["email"];
+                
+                
+                if(!file_exists($path)){
+                    mkdir($path);
+                }
+                
                 // Проверим, загружалось ли через форму изображение
                 if (is_uploaded_file($_FILES["file"]["tmp_name"])) {
-                    mkdir($path . $user['email']);
+                    
                     // Если загружалось, переместим его в нужную папке, дадим новое имя
                     //$_SERVER['DOCUMENT_ROOT']
                     $options['txtWorkName'] = $_FILES["file"]["name"];
-                    move_uploaded_file($_FILES["file"]["tmp_name"],  $path . $user['email'] . '/' . $_FILES["file"]["name"]);
-                    $options['txtWorkPath'] = $path . $user['email'] . '/' . $_FILES["file"]["name"];
+                    move_uploaded_file($_FILES["file"]["tmp_name"],  $path . '/' . $_FILES["file"]["name"]);
+                    $options['txtWorkPath'] = $path . $_FILES["file"]["name"];
                 }
                 // Запускаем обработку файла
                 
-                $options['txtResult'] = Report::checkWork($path . $user['email'] . '/' . $_FILES["file"]["name"]);
+                $options['txtResult'] = Report::checkWork($path . '/' . $_FILES["file"]["name"]);
                 $options['intDate'] = date("d.m.y");
 				
                 // Создаём новый отчёт

@@ -23,7 +23,7 @@ class ReportController extends AdminBase
     /**
      * Action для страницы "Отчёт по курсу"
      */
-    public function actionCourse()
+    public function actionCourse($intCourseID=null)
     {       
         // Проверка доступа
         self::checkAdmin();
@@ -62,7 +62,7 @@ class ReportController extends AdminBase
     /**
      * Action для страницы "Отчёт по заданию"
      */
-    public function actionTask()
+    public function actionTask($intCourseID=null, $intTaskID=null)
     {       
         // Проверка доступа
         self::checkAdmin();
@@ -109,7 +109,7 @@ class ReportController extends AdminBase
         /**
      * Action для страницы "Отчёт по заданию"
      */
-    public function actionStudent()
+    public function actionStudent($intUserID=null)
     {       
         // Проверка доступа
         self::checkAdmin();
@@ -143,8 +143,10 @@ class ReportController extends AdminBase
             }
         }*/
 
+
         // Подключаем вид
         require_once(ROOT . '/views/report/student.php');
+        
         return true;
     }
     
@@ -159,16 +161,17 @@ class ReportController extends AdminBase
         
         foreach ($reportsList as $report) {
              $task = Task::getTaskById($report['intTaskID']);
+             $student = User::getUserById($report['intUserID']);
                 echo "<tr>
                     <td>" . $report['intDate'] . "</td>" ;
                 echo "<td>
-                        <a href='/report/task/" . $report['intTaskID'] . "'>" .
+                        <a href='/report/task/" . $intCourseID . "/" . $report['intTaskID'] . "'>" .
                              $task['txtTaskName'] .
                         "</a>
                     </td>";
                 echo "<td>
-                        <a href='/report/showStudentTable/" . $report['intUserID'] . "'>" .
-                            $report['intUserID'] .
+                        <a href='/report/student/" . $report['intUserID'] . "'>" .
+                            $student['email'] .
                         "</a>
                     </td>";
                 echo "<td>"
@@ -186,6 +189,7 @@ class ReportController extends AdminBase
     }
     
     public function actionShowStudentTable($intStudentID){
+        
         $reportsList = Report::getReportsListByStudentId($intStudentID);
         
         if ($reportsList == null) {
@@ -204,7 +208,7 @@ class ReportController extends AdminBase
                         "</a>
                     </td>";
                 echo "<td>
-                        <a href='/report/task/" . $report['intTaskID'] . "'>" .
+                        <a href='/report/task/" . $report['intCourseID'] . "/" . $report['intTaskID'] . "'>" .
                              $task['txtTaskName'] .
                         "</a>
                     </td>";
@@ -213,15 +217,50 @@ class ReportController extends AdminBase
 //                            $report['intUserID'] .
 //                        "</a>
 //                    </td>";
-                echo "<td>" . $report['txtWorkPath'] . "</td>
-                    <td>" . $report['txtResult'] . "</td>
+                echo "<td>"
+                        . "<a href=" . $report['txtWorkPath'] . "'>" .
+                            $report['txtWorkName'] 
+                        . "</a>"
+                    . "</td>";
+                echo "<td>" . $report['txtResult'] . "</td>
                 </tr>";
         }
         
-        echo '<script type="text/javascript">$("#studentName").</script>';
-        require_once(ROOT . '/views/report/student.php');
+        //echo '<script type="text/javascript">$("#studentName").</script>';
+        //require_once(ROOT . '/views/report/student.php');
         return true;
     }
 
+    public function actionShowTaskTable($intCourseID, $intTaskID){
         
+        $reportsList = Report::getReportsListByTaskId($intCourseID, $intTaskID);
+        
+        if ($reportsList == null) {
+            $msg = "По данному заданию нет отчётов";
+            echo $msg;
+        }
+        
+        foreach ($reportsList as $report) {
+                $student = User::getUserById($report['intUserID']);
+                
+                echo "<tr>
+                    <td>" . $report['intDate'] . "</td>" ;
+                echo "<td>
+                        <a href='/report/student/" . $report['intUserID'] . "'>" .
+                            $student['email'] .
+                        "</a>
+                    </td>";
+                echo "<td>"
+                        . "<a href=" . $report['txtWorkPath'] . "'>" .
+                            $report['txtWorkName'] 
+                        . "</a>"
+                    . "</td>";
+                echo    "<td>" . $report['txtResult'] . "</td>
+                    
+                </tr>";
+        }
+        
+        
+        return true;
+    }
 }

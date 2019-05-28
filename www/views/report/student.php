@@ -1,21 +1,23 @@
 <?php include ROOT . '/views/layouts/header_admin.php'; ?>
 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/template/js/jquery.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function (){
         $("#send").click(function(){
-            var student_id = $("#StudentName option:selected").val();
+            var student_id = $("#studentName option:selected").val();
             
             if (student_id !== ""){
+                
                 $.post("/report/showStudentTable/"+student_id, {  }, 
                             function(data){
-                                $("#sub_sub_report").html(data)
+                                //alert(data);
+                               $("#sub_sub_report").html(data); 
                             })
             }
             else {
                 $("#sub_sub_report").empty();
-                alert("Нужно выбрать курс");
+                alert("Нужно выбрать студента");
             }
         });
     })
@@ -43,7 +45,6 @@
 
         <div class="col-lg-4">
                 <div class="login-form">
-                    
                     <label for="studentName">Студент: </label>
                                 <select name="studentName" id="studentName">
                                     <?php 
@@ -52,12 +53,20 @@
                                     foreach ($studentsList as $student) {
                                         unset($id, $name);
                                         $id = $student['intUserID'];
-                                        $name = $student['email']; 
-                                        echo '<option value="'.$id.'">'.$name.'</option>';
+                                        $name = $student['email'];
+                                        
+                                        if($intUserID == $id) {
+                                            echo '<option value="'.$id.'" selected="true">'.$name.'</option>';
+                                            $intUserID = null;
+                                        }
+                                        else 
+                                            echo '<option value="'.$id.'">'.$name.'</option>';
 
                                     } 
                                     ?>
+                                    
                                 </select>
+
                     <button id="send">Показать</button>
                     
                     <table id="sub_report" class="table table-striped">

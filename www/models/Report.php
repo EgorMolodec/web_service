@@ -77,16 +77,17 @@ class Report
      * @return array <p>Массив со списком отчётов</p>
      */
 
-    public static function getReportsListByTaskId($courseID, $taskID)
-    {
+    public static function getReportsListByTaskId($intCourseID, $intTaskID)
+    {        
         // Соединение с БД
         $db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = "SELECT * FROM tblReport WHERE intCourseID = :courseID AND intTaskID = :taskID";
+        $sql = "SELECT * FROM tblReport WHERE intCourseID = :intCourseID AND intTaskID = :intTaskID";
 
         $result = $db->prepare($sql);
-        $result->bindParam(':intReportID', $intReportID, PDO::PARAM_INT);
+        $result->bindParam(':intCourseID', $intCourseID, PDO::PARAM_INT);
+        $result->bindParam(':intTaskID', $intTaskID, PDO::PARAM_INT);
         
         // Выполнение комaнды
         $result->execute();

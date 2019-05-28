@@ -26,7 +26,7 @@ return array(
     'report/course' => 'report/course/null',
     'report/course/([0-9]+)' => 'report/course/$1',
     'report/task' => 'report/task',
-    'report/task/([0-9]+)' => 'report/task/$1',
+    'report/task/([0-9]+)/([0-9]+)' => 'report/task/$1/$2',
     'report/student' => 'report/student',
     'report/student/([0-9]+)' => 'report/student/$1',
 //    'report/student/([0-9]+)/([0-9]+)' => 'report/student/$1/$2',

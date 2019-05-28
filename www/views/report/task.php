@@ -4,6 +4,29 @@
 
 <script type="text/javascript" src="/template/js/chooseTask.js"></script>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#send").click(function(){
+
+                var course_value = $("#get_course option:selected").val();
+                var task_value = $("#get_task option:selected").val();
+
+                if (course_value !== "" && task_value !== "") {
+                    $.post("/report/showTaskTable/"+course_value+"/"+task_value, {  },     
+                                function(data) {
+                                     //alert(data) ; 
+                                     $("#sub_sub_report").html(data); 
+                                })
+                }
+                else {
+                    $("#sub_sub_report").empty();
+                    alert("Нужно выбрать курс"); 
+                }
+        });
+    })
+    
+</script>
+
 <section>
     <div class="container">
         <div class="row">
@@ -35,8 +58,13 @@
                                 unset($id, $name);
                                 $id = $course['intCourseID'];
                                 $name = $course['txtCourseName']; 
-                                echo '<option value="'.$id.'">'.$name.'</option>';
-
+                                
+                                if($intCourseID == $id) {
+                                    echo '<option value="'.$id.'" selected="true">'.$name.'</option>';
+                                    echo '';
+                                }
+                                else 
+                                    echo '<option value="'.$id.'">'.$name.'</option>';
                             } 
                             ?>
                         </select>

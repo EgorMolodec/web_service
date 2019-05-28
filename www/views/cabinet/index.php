@@ -61,7 +61,8 @@
                 <tbody>
                     <?php 
                         $i = 1;
-                        foreach ($reportsList as $report): ?>
+                        $reports = array_reverse($reportsList);
+                        foreach ($reports as $report): ?>
                         <tr>
                             <td><?php echo $i; ?></td>
                             <td>
