@@ -50,7 +50,7 @@ return array(
 //    Главная страница преподавателя
     
     'admin' => 'admin/index',
-    'admin/settings' => 'admin/settings',
+    'settings' => 'admin/settings',
     
     'upload/([A-Za-z0-9]+)/([A-Za-z0-9]+)/([A-Za-z0-9.]+)' => 'user/uploadFile/$1/$2/$3',
 

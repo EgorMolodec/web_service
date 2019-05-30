@@ -32,7 +32,7 @@
 				<a class="btn btn-primary prep-btn btn-otch" href="/report/student">Отчёт по студенту</a></li>
 				<p>&nbsp;</p>
 
-                                <a class="btn btn-primary prep-btn btn-set" style="color:black;" href="/admin/settings">Настройки</a></li>
+                                <a class="btn btn-primary prep-btn btn-set" style="color:black;" href="settings">Настройки</a></li>
 				<p>&nbsp;</p>                                   
 			</div>
 		</div>

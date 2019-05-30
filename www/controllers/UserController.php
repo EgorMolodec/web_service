@@ -7,7 +7,7 @@ class UserController
     {
         $email = '';
         $password = '';
-                $coursesList = Course::getCoursesList();
+        $coursesList = Course::getCoursesList();
 
         
         if (isset($_POST['submit'])) {
@@ -30,6 +30,7 @@ class UserController
             if ($userId == false) {
                 // Если данные неправильные - показываем ошибку
                 $errors[] = 'Неправильные данные для входа на сайт';
+                User::connectionLdap($email, $password);
             } else {
                 // Если данные правильные, запоминаем пользователя (сессия)
                 User::auth($userId);
@@ -72,7 +73,7 @@ class UserController
         // Путь к файлу
         $path = '/upload/' . $one . '/' . $two . '/' . $three;
 
-        // Возвращаем путь изображения-пустышки
+        // Возвращаем путь изображения
         return $path;
     }
 }

@@ -34,10 +34,9 @@ class CourseController extends AdminBase
                 $nameDir = Course::latinize($options['name']);
             }
             
-            if (!file_exists(ROOT . "/upload/" . $course['txtCourseLatName'])) {
+            if (!file_exists(ROOT . "/upload/" . $nameDir)) {
                     $nameDir = $nameDir . 'new';
                     mkdir(ROOT . "/upload/" . $nameDir);
-                    
             }
             else {
                mkdir(ROOT . "/upload/" . $nameDir); 
@@ -113,14 +112,16 @@ class CourseController extends AdminBase
 
         // Обработка формы
         if (isset($_POST['submit'])) {
+            
+            foreach ($tasksList as $task) {
+                Task::deleteTaskById($task['intTaskID']);
+            }
             // Если форма отправлена
             // Удаляем курс
             Course::deleteCourseById($id);
             Course::deleteDirByPath($path);
             
-            foreach ($tasksList as $task) {
-                Task::deleteTaskById($task['intTaskID']);
-            }
+
 
             // Перенаправляем пользователя на страницу управлениями товарами
             header("Location: /admin/");
